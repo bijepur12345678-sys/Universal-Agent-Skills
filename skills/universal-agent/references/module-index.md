@@ -2,6 +2,14 @@
 
 This file belongs to the `universal-agent` Skill package. Select only the modules needed for the current task.
 
+## Granular capability catalogue
+
+The repository-level `registry/capabilities.json` contains 88 experimental task-capability records across all 22 domains (four per domain). These are routing records, not 88 separate public Skills. Each record maps to one of the internal modules below using `module_id`.
+
+Use `universal-skills route --task "..." ` when the Python toolkit is available, or the read-only cloud API/MCP endpoint after it is deployed. Check returned `required_tools`, `missing_tools`, `risk_level`, and `approval_required` before execution.
+
+## Internal modules
+
 | Module ID | File | Trigger |
 |---|---|---|
 | `github-source-research` | `modules/github-source-research.md` | Find and evaluate public repositories, releases, compatibility, maintenance, security, and license evidence for candidate skills and tools. |
@@ -35,6 +43,7 @@ This file belongs to the `universal-agent` Skill package. Select only the module
 
 - Load one to five relevant modules for a normal task.
 - Multi-stage tasks may combine distinct modules in a clear order.
+- Deduplicate module IDs after ranking capability records.
 - Do not load all modules into context.
 - Use the repository-level `registry/catalog.json` for lifecycle status, source provenance, tags, and dependencies when available.
 - New modules are experimental until tests and review justify promotion.
