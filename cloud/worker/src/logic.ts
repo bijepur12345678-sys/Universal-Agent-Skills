@@ -10,6 +10,7 @@ export interface Capability {
   risk_level: "low" | "moderate" | "elevated";
   approval_required: boolean;
   status: "stable" | "experimental" | "legacy" | "deprecated" | "archived";
+  workflow_ref?: string;
 }
 
 const STOP_WORDS = new Set([
@@ -97,6 +98,7 @@ export function rankCapabilities(
       name: item.name,
       domain: item.domain,
       module_id: item.module_id,
+      workflow_ref: item.workflow_ref ?? null,
       status: item.status,
       score,
       matched_terms: [...matched].sort(),
