@@ -7,7 +7,7 @@ import json
 import sys
 from pathlib import Path
 
-from .capabilities import route_task, validate_capabilities
+from .capabilities import load_capability_workflow, load_capabilities, route_task, validate_capabilities
 from .registry import (
     RegistryError,
     load_catalog,
@@ -55,6 +55,13 @@ def _parser() -> argparse.ArgumentParser:
     )
     route.add_argument("--include-legacy", action="store_true", help="Include legacy records.")
 
+    show_capability = subparsers.add_parser(
+        "show-capability",
+        help="Print one granular capability workflow section without loading unrelated workflows.",
+    )
+    show_capability.add_argument("--id", required=True, help="Stable capability ID.")
+    show_capability.add_argument("--include-legacy", action="store_true", help="Allow loading a legacy capability.")
+
     show = subparsers.add_parser("show", help="Print one internal module's instructions.")
     show.add_argument("--id", required=True, help="Catalogue skill ID.")
     show.add_argument("--include-legacy", action="store_true", help="Allow loading a legacy module.")
@@ -72,9 +79,11 @@ def main(argv: list[str] | None = None) -> int:
                     print(f"ERROR: {error}", file=sys.stderr)
                 return 1
             catalog = load_catalog(root)
+            capabilities = load_capabilities(root)
             print(
                 f"Registry valid: {len(catalog['skills'])} module records, "
-                "one public entrypoint, and capability registry valid."
+                f"{capabilities['capability_count']} capability workflows, "
+                "one public entrypoint."
             )
             return 0
         if args.command == "capability-validate":
@@ -108,6 +117,9 @@ def main(argv: list[str] | None = None) -> int:
                 include_legacy=args.include_legacy,
             )
             print(json.dumps(results, indent=2, ensure_ascii=False))
+            return 0
+        if args.command == "show-capability":
+            print(load_capability_workflow(args.id, root, include_legacy=args.include_legacy))
             return 0
         if args.command == "show":
             print(load_module(args.id, root, include_legacy=args.include_legacy))
