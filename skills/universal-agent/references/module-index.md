@@ -2,6 +2,18 @@
 
 This file belongs to the `universal-agent` Skill package. Select only the modules needed for the current task.
 
+## Granular capability catalogue
+
+The repository-level `registry/capabilities.json` contains 176 experimental task-capability records across all 22 domains (eight per domain). The workflow instructions live as individually retrievable sections in `capability-workflows.md`; these are internal workflows, not separate top-level Agent Skills. Each capability maps to one parent module below using `module_id`.
+
+Route with `universal-skills route --task "..."`, then load only the selected section using `universal-skills show-capability --id <capability-id>`. After deployment, compatible clients can use `GET /v1/workflows/:id` or MCP `get_capability_workflow`. Check `required_tools`, `missing_tools`, `risk_level`, and `approval_required` before execution.
+
+## Capability workflow pack
+
+`capability-workflows.md` contains 176 focused first-party workflow sections. Retrieve by stable capability ID; never load the whole pack into model context.
+
+## Internal modules
+
 | Module ID | File | Trigger |
 |---|---|---|
 | `github-source-research` | `modules/github-source-research.md` | Find and evaluate public repositories, releases, compatibility, maintenance, security, and license evidence for candidate skills and tools. |
@@ -35,6 +47,7 @@ This file belongs to the `universal-agent` Skill package. Select only the module
 
 - Load one to five relevant modules for a normal task.
 - Multi-stage tasks may combine distinct modules in a clear order.
+- Deduplicate module IDs after ranking capability records.
 - Do not load all modules into context.
 - Use the repository-level `registry/catalog.json` for lifecycle status, source provenance, tags, and dependencies when available.
 - New modules are experimental until tests and review justify promotion.
