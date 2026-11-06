@@ -20,10 +20,30 @@ class RegistryTests(unittest.TestCase):
         self.assertEqual(len(entrypoints), 1)
         self.assertEqual(entrypoints[0]["path"], catalog["entrypoint"])
 
+    def test_catalogue_has_22_domain_modules_and_26_internal_modules(self) -> None:
+        catalog = json.loads((ROOT / "registry/catalog.json").read_text(encoding="utf-8"))
+        domains = json.loads((ROOT / "registry/domains.json").read_text(encoding="utf-8"))
+        internal = [item for item in catalog["skills"] if not item["entrypoint"]]
+        domain_modules = [item for item in internal if item["id"].startswith("domain-")]
+        self.assertEqual(len(domains["domains"]), 22)
+        self.assertEqual(len(internal), 26)
+        self.assertEqual(len(domain_modules), 22)
+
+    def test_all_internal_modules_are_packaged_with_entrypoint(self) -> None:
+        catalog = json.loads((ROOT / "registry/catalog.json").read_text(encoding="utf-8"))
+        internal = [item for item in catalog["skills"] if not item["entrypoint"]]
+        for item in internal:
+            self.assertTrue(item["path"].startswith("skills/universal-agent/references/modules/"))
+            self.assertTrue((ROOT / item["path"]).is_file(), item["path"])
+
     def test_search_finds_github_research_module(self) -> None:
         results = search_catalog("GitHub repository source research", limit=5, root=ROOT)
         self.assertTrue(results)
         self.assertEqual(results[0]["id"], "github-source-research")
+
+    def test_search_finds_cloud_workflow(self) -> None:
+        results = search_catalog("cloud serverless Workers storage", limit=10, root=ROOT)
+        self.assertTrue(any(item["id"] == "domain-cloud" for item in results))
 
     def test_load_module_returns_first_party_instructions(self) -> None:
         text = load_module("license-provenance-review", root=ROOT)
