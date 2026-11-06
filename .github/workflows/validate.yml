@@ -2,7 +2,7 @@ name: Validate Universal Agent Skills
 
 on:
   push:
-    branches: [main]
+    branches: [main, "feat/**"]
   pull_request:
   workflow_dispatch:
 
@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 jobs:
-  validate:
+  python:
     runs-on: ubuntu-latest
     env:
       PYTHONPATH: src
@@ -23,5 +23,24 @@ jobs:
         run: python -m compileall -q src tests
       - name: Run unit tests
         run: python -m unittest discover -s tests -v
-      - name: Validate registry
+      - name: Validate module and capability registries
         run: python -m universal_skills validate
+      - name: Smoke-test capability routing
+        run: python -m universal_skills route --task "build a Cloudflare Workers serverless API" --limit 3
+
+  cloud-worker:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: cloud/worker
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install Worker dependencies
+        run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Type-check Worker
+        run: npm run check
+      - name: Validate Wrangler bundle without deploying
+        run: npx wrangler deploy --dry-run
