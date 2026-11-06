@@ -20,6 +20,10 @@ Universal Agent Skills is an open-source, modular Agent Skill package. It expose
 
 AI/ML, Agentic AI, Software Engineering, Frontend, Backend, Cloud, DevOps, Databases, Research, UI/UX, Browser, Desktop, Mobile, Media, YouTube, Automation, Documents, Data Science, Security Analysis, Testing/QA, Education, and Business/Operations.
 
+## Official upstream source coverage
+
+The source registry includes 28 upstream repositories and official documentation references, including Microsoft, Cloudflare, Vercel, Supabase, GitHub, Anthropic, LangChain, Playwright, and the MCP ecosystem. The Microsoft review includes `microsoft/skills`, `microsoft/azure-skills`, `MicrosoftDocs/agent-skills`, `microsoft/agent-framework`, `microsoft/mcp`, and `microsoft/waza`. These are candidates/references—not bulk imports. Every individual Skill still needs task-fit, exact-path license, provenance, compatibility, and safety review. See [the Microsoft ecosystem review](docs/research/microsoft-ecosystem-scan-2026-11-06.md) and [registry/sources.json](registry/sources.json).
+
 ## Repository map
 
 | Path | Responsibility |
