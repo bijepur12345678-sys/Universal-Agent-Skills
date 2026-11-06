@@ -39,8 +39,10 @@ jobs:
         with:
           node-version: "22"
       - name: Install Worker dependencies
-        run: npm install --ignore-scripts --no-audit --no-fund
+        run: npm install --no-audit --no-fund
       - name: Type-check Worker
         run: npm run check
+      - name: Run Worker unit tests
+        run: npm test
       - name: Validate Wrangler bundle without deploying
         run: npx wrangler deploy --dry-run
