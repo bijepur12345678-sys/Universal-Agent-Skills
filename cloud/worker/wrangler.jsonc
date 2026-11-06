@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "universal-agent-skills-registry",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-06",
+  "workers_dev": true,
+  "vars": {
+    "SOURCE_REF": "REPLACE_WITH_REVIEWED_40_CHARACTER_COMMIT_SHA"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
