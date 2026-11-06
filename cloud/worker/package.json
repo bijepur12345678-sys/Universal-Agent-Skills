@@ -1,0 +1,21 @@
+{
+  "name": "universal-agent-skills-registry-worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "wrangler types --include-env=false && tsc --noEmit",
+    "test": "vitest run",
+    "deploy:dry-run": "wrangler deploy --dry-run"
+  },
+  "dependencies": {
+    "agents": "0.33.0",
+    "@modelcontextprotocol/server": "2.3.1",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "vitest": "3.2.4",
+    "wrangler": "4.158.0"
+  }
+}
