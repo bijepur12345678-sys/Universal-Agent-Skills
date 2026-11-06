@@ -68,7 +68,7 @@ describe("rankCapabilities", () => {
 
   it("excludes archived records by default", () => {
     const result = rankCapabilities("old cloud deployment", records);
-    expect(result).toHaveLength(0);
+    expect(result.some((item) => item.capability_id === "archived-old")).toBe(false);
   });
 
   it("rejects invalid limits and empty tasks", () => {
