@@ -92,8 +92,6 @@ def main(argv: list[str] | None = None) -> int:
                 for error in errors:
                     print(f"ERROR: {error}", file=sys.stderr)
                 return 1
-            from .capabilities import load_capabilities
-
             document = load_capabilities(root)
             print(f"Capability registry valid: {document['capability_count']} records.")
             return 0
