@@ -42,9 +42,10 @@ These are first-party starter modules, not a claim that every domain is fully im
 Requires Python 3.10+ for the optional local CLI. The Skill Markdown itself can be read without installing anything.
 
 ```bash
-python -m compileall -q src tests
-python -m unittest discover -s tests -v
-python -m universal_skills validate
+PYTHONPATH=src python -m compileall -q src tests
+PYTHONPATH=src python -m unittest discover -s tests -v
+PYTHONPATH=src python -m universal_skills validate
+PYTHONPATH=src python -m universal_skills search --query "GitHub research" --limit 5
 ```
 
 ## Scale and roadmap
