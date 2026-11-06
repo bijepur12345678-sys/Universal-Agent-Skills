@@ -303,6 +303,7 @@ def route_task(
             "name": item["name"],
             "domain": item["domain"],
             "module_id": item["module_id"],
+            "workflow_ref": item.get("workflow_ref"),
             "status": status,
             "module_status": module_status,
             "score": score,
