@@ -7,7 +7,8 @@
 | GET | /health | none | service status |
 | GET | /v1/domains | none | domain taxonomy |
 | GET | /v1/capabilities | query, optional domain, limit | ranked capabilities |
-| GET | /v1/modules/:id | stable internal module ID | first-party module content |
+| GET | /v1/modules/:id | stable internal module ID | first-party parent module content |
+| GET | /v1/workflows/:id | stable capability ID | one selected workflow section |
 | GET | /v1/sources/discover | query, optional limit | metadata-only GitHub candidates |
 
 All endpoints are read-only. Invalid input receives a 4xx response; upstream failures receive a 502 response.
