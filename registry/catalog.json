@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-06",
+  "entrypoint": "skills/universal-agent/SKILL.md",
+  "skills": [
+    {"id":"universal-agent-entrypoint","name":"Universal Agent","description":"Single public entrypoint to identify tasks, search the internal catalogue, load relevant modules, and coordinate verified workflows.","domain":"agentic-ai","path":"skills/universal-agent/SKILL.md","version":"0.1.0","status":"experimental","tags":["universal","entrypoint","router","discovery","workflow"],"source_ids":[],"license":"Apache-2.0","entrypoint":true},
+    {"id":"github-source-research","name":"GitHub Source Research","description":"Find and evaluate public repositories, releases, compatibility, maintenance, security, and license evidence for candidate skills and tools.","domain":"research","path":"skills/modules/github-source-research.md","version":"0.1.0","status":"experimental","tags":["github","research","repository","source discovery","release","maintenance"],"source_ids":[],"license":"Apache-2.0","entrypoint":false},
+    {"id":"skill-authoring","name":"Skill Authoring","description":"Create modular and testable Agent Skills instructions with metadata, triggers, prerequisites, examples, and validation guidance.","domain":"agentic-ai","path":"skills/modules/skill-authoring.md","version":"0.1.0","status":"experimental","tags":["skill","authoring","markdown","agent skills","documentation"],"source_ids":["anthropic-skills"],"license":"Apache-2.0","entrypoint":false},
+    {"id":"license-provenance-review","name":"License and Provenance Review","description":"Review file-level license scope, source revisions, attribution, notices, and redistribution constraints before including third-party materials.","domain":"security-analysis","path":"skills/modules/license-provenance-review.md","version":"0.1.0","status":"experimental","tags":["license","provenance","copyright","attribution","supply chain"],"source_ids":["skillcorpus","agentic-awesome-skills","awesome-copilot"],"license":"Apache-2.0","entrypoint":false},
+    {"id":"registry-maintenance","name":"Registry Maintenance","description":"Maintain unique skill IDs, metadata quality, domain membership, source references, versions, and lifecycle status in the canonical catalogue.","domain":"agentic-ai","path":"skills/modules/registry-maintenance.md","version":"0.1.0","status":"experimental","tags":["registry","catalogue","deduplication","versioning","metadata"],"source_ids":["skillcorpus","skills-tree"],"license":"Apache-2.0","entrypoint":false}
+  ]
+}
