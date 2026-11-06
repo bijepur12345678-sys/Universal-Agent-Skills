@@ -1,0 +1,2221 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-06",
+  "description": "Granular task capabilities mapped to one of the existing internal domain workflow modules. These records are routing metadata, not separate public Agent Skills.",
+  "capability_count": 88,
+  "capabilities": [
+    {
+      "id": "ai-ml-llm-integration",
+      "domain": "ai-ml",
+      "module_id": "domain-ai-ml",
+      "name": "LLM provider integration",
+      "description": "Connect language model APIs, choose provider interfaces, handle structured output, retries, rate limits, and safe secret references.",
+      "triggers": [
+        "llm api",
+        "model provider",
+        "chat completion",
+        "structured output"
+      ],
+      "synonyms": [
+        "language model",
+        "foundation model",
+        "inference api"
+      ],
+      "required_tools": [
+        "model-api",
+        "secrets",
+        "http-client"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "ai-ml-embeddings-rag",
+      "domain": "ai-ml",
+      "module_id": "domain-ai-ml",
+      "name": "Embeddings and RAG",
+      "description": "Build retrieval augmented generation pipelines with embeddings, chunking, indexing, grounded retrieval, and citation-aware answers.",
+      "triggers": [
+        "embeddings",
+        "vector search",
+        "retrieval augmented generation",
+        "RAG pipeline"
+      ],
+      "synonyms": [
+        "semantic retrieval",
+        "knowledge retrieval",
+        "vector database"
+      ],
+      "required_tools": [
+        "embedding-api",
+        "vector-store",
+        "database"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "ai-ml-model-evaluation",
+      "domain": "ai-ml",
+      "module_id": "domain-ai-ml",
+      "name": "Model evaluation and benchmarking",
+      "description": "Evaluate model quality, latency, cost, robustness, and task performance with reproducible test sets and evidence.",
+      "triggers": [
+        "model evaluation",
+        "llm benchmark",
+        "model quality",
+        "latency benchmark"
+      ],
+      "synonyms": [
+        "model comparison",
+        "benchmarking",
+        "evals"
+      ],
+      "required_tools": [
+        "model-api",
+        "evaluation-harness"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "ai-ml-training-inference",
+      "domain": "ai-ml",
+      "module_id": "domain-ai-ml",
+      "name": "Training and inference workflows",
+      "description": "Plan dataset preparation, fine-tuning suitability, model serving, inference optimization, and deployment constraints.",
+      "triggers": [
+        "fine tuning",
+        "model training",
+        "inference optimization",
+        "model serving"
+      ],
+      "synonyms": [
+        "training pipeline",
+        "serving model",
+        "quantization"
+      ],
+      "required_tools": [
+        "ml-framework",
+        "compute",
+        "model-registry"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "agentic-ai-agent-design",
+      "domain": "agentic-ai",
+      "module_id": "domain-agentic-ai",
+      "name": "Agent architecture design",
+      "description": "Design agent boundaries, task state, planning loops, context handling, and measurable completion conditions.",
+      "triggers": [
+        "agent architecture",
+        "AI agent design",
+        "agent loop",
+        "task planning"
+      ],
+      "synonyms": [
+        "agent design",
+        "autonomous workflow",
+        "reasoning loop"
+      ],
+      "required_tools": [
+        "agent-framework",
+        "state-store"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "agentic-ai-tool-routing",
+      "domain": "agentic-ai",
+      "module_id": "domain-agentic-ai",
+      "name": "Tool discovery and routing",
+      "description": "Select the best available tool or internal capability using intent, prerequisites, permissions, reliability, and fallback rules.",
+      "triggers": [
+        "tool routing",
+        "tool selection",
+        "tool discovery",
+        "capability routing"
+      ],
+      "synonyms": [
+        "tool choice",
+        "function calling",
+        "tool registry"
+      ],
+      "required_tools": [
+        "tool-registry",
+        "mcp",
+        "api"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "agentic-ai-memory",
+      "domain": "agentic-ai",
+      "module_id": "domain-agentic-ai",
+      "name": "Agent memory and retrieval",
+      "description": "Design bounded working memory, durable knowledge retrieval, summarization, retention, and user-controlled memory boundaries.",
+      "triggers": [
+        "agent memory",
+        "memory retrieval",
+        "context management",
+        "memory consolidation"
+      ],
+      "synonyms": [
+        "long term memory",
+        "conversation memory",
+        "knowledge store"
+      ],
+      "required_tools": [
+        "memory-store",
+        "vector-store",
+        "database"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "agentic-ai-multi-agent",
+      "domain": "agentic-ai",
+      "module_id": "domain-agentic-ai",
+      "name": "Multi-agent orchestration",
+      "description": "Coordinate specialist agents with typed handoffs, shared task state, bounded retries, and verifiable outputs.",
+      "triggers": [
+        "multi agent",
+        "agent orchestration",
+        "specialist agents",
+        "agent handoff"
+      ],
+      "synonyms": [
+        "team agents",
+        "agent collaboration",
+        "workflow graph"
+      ],
+      "required_tools": [
+        "agent-framework",
+        "workflow-engine"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "software-architecture",
+      "domain": "software-engineering",
+      "module_id": "domain-software-engineering",
+      "name": "Software architecture planning",
+      "description": "Plan repository architecture, module boundaries, API contracts, dependency direction, migrations, and incremental implementation.",
+      "triggers": [
+        "software architecture",
+        "system design",
+        "module design",
+        "architecture review"
+      ],
+      "synonyms": [
+        "technical design",
+        "repository structure",
+        "design proposal"
+      ],
+      "required_tools": [
+        "git",
+        "documentation"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "software-implementation",
+      "domain": "software-engineering",
+      "module_id": "domain-software-engineering",
+      "name": "Feature implementation",
+      "description": "Implement scoped software features with clear acceptance criteria, tests, error handling, and maintainable code.",
+      "triggers": [
+        "implement feature",
+        "write code",
+        "build software",
+        "add functionality"
+      ],
+      "synonyms": [
+        "coding task",
+        "software change",
+        "feature development"
+      ],
+      "required_tools": [
+        "code-editor",
+        "git",
+        "test-runner"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "software-debugging",
+      "domain": "software-engineering",
+      "module_id": "domain-software-engineering",
+      "name": "Debugging and root-cause analysis",
+      "description": "Reproduce defects, inspect logs and code paths, identify root causes, and verify fixes with regression tests.",
+      "triggers": [
+        "debug error",
+        "root cause",
+        "fix bug",
+        "stack trace"
+      ],
+      "synonyms": [
+        "troubleshooting",
+        "bug fixing",
+        "runtime error"
+      ],
+      "required_tools": [
+        "logs",
+        "code-search",
+        "test-runner"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "software-review",
+      "domain": "software-engineering",
+      "module_id": "domain-software-engineering",
+      "name": "Code review and refactoring",
+      "description": "Review code for correctness, maintainability, security, performance, and compatibility, then propose minimal verified refactors.",
+      "triggers": [
+        "code review",
+        "refactor code",
+        "review pull request",
+        "technical debt"
+      ],
+      "synonyms": [
+        "static review",
+        "maintainability",
+        "cleanup code"
+      ],
+      "required_tools": [
+        "git",
+        "static-analysis",
+        "test-runner"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "frontend-responsive-ui",
+      "domain": "frontend",
+      "module_id": "domain-frontend",
+      "name": "Responsive interface development",
+      "description": "Build responsive web interfaces with semantic markup, adaptive layouts, component composition, and device-aware behavior.",
+      "triggers": [
+        "responsive website",
+        "responsive UI",
+        "web interface",
+        "mobile layout"
+      ],
+      "synonyms": [
+        "frontend UI",
+        "web page",
+        "responsive design"
+      ],
+      "required_tools": [
+        "frontend-framework",
+        "browser"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "frontend-components",
+      "domain": "frontend",
+      "module_id": "domain-frontend",
+      "name": "Component engineering",
+      "description": "Design reusable UI components, state boundaries, forms, validation, loading states, and predictable component APIs.",
+      "triggers": [
+        "React component",
+        "component library",
+        "UI component",
+        "frontend state"
+      ],
+      "synonyms": [
+        "design system component",
+        "reusable component",
+        "form UI"
+      ],
+      "required_tools": [
+        "frontend-framework",
+        "design-system"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "frontend-performance",
+      "domain": "frontend",
+      "module_id": "domain-frontend",
+      "name": "Frontend performance optimization",
+      "description": "Analyze bundle size, rendering, caching, asset loading, and Core Web Vitals with measurement-driven improvements.",
+      "triggers": [
+        "frontend performance",
+        "web vitals",
+        "bundle optimization",
+        "render performance"
+      ],
+      "synonyms": [
+        "page speed",
+        "web optimization",
+        "lazy loading"
+      ],
+      "required_tools": [
+        "browser",
+        "performance-profiler"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "frontend-accessibility",
+      "domain": "frontend",
+      "module_id": "domain-frontend",
+      "name": "Frontend accessibility",
+      "description": "Audit semantic structure, keyboard operation, focus behavior, contrast, labels, and assistive-technology compatibility.",
+      "triggers": [
+        "web accessibility",
+        "WCAG",
+        "keyboard navigation",
+        "screen reader"
+      ],
+      "synonyms": [
+        "accessible UI",
+        "a11y audit",
+        "inclusive design"
+      ],
+      "required_tools": [
+        "accessibility-checker",
+        "browser"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "backend-api-design",
+      "domain": "backend",
+      "module_id": "domain-backend",
+      "name": "API and service design",
+      "description": "Design versioned REST or RPC APIs, request validation, pagination, error contracts, documentation, and backward compatibility.",
+      "triggers": [
+        "REST API",
+        "API design",
+        "backend endpoint",
+        "service contract"
+      ],
+      "synonyms": [
+        "HTTP API",
+        "API schema",
+        "service interface"
+      ],
+      "required_tools": [
+        "backend-framework",
+        "api-client"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "backend-auth",
+      "domain": "backend",
+      "module_id": "domain-backend",
+      "name": "Authentication and authorization",
+      "description": "Implement secure sign-in, session handling, OAuth scopes, role checks, least privilege, and account separation.",
+      "triggers": [
+        "OAuth",
+        "authentication",
+        "authorization",
+        "access control"
+      ],
+      "synonyms": [
+        "login system",
+        "permissions",
+        "identity management"
+      ],
+      "required_tools": [
+        "identity-provider",
+        "secrets",
+        "database"
+      ],
+      "risk_level": "elevated",
+      "approval_required": true,
+      "status": "experimental"
+    },
+    {
+      "id": "backend-integrations",
+      "domain": "backend",
+      "module_id": "domain-backend",
+      "name": "External service integrations",
+      "description": "Connect external APIs with robust schemas, retries, rate limits, webhooks, idempotency, and documented permissions.",
+      "triggers": [
+        "API integration",
+        "third party API",
+        "webhook integration",
+        "service connector"
+      ],
+      "synonyms": [
+        "external API",
+        "connector",
+        "service integration"
+      ],
+      "required_tools": [
+        "http-client",
+        "secrets",
+        "webhook"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "backend-background-jobs",
+      "domain": "backend",
+      "module_id": "domain-backend",
+      "name": "Background jobs and queues",
+      "description": "Design async jobs, queues, retries, dead-letter handling, idempotency, and observable task status.",
+      "triggers": [
+        "background jobs",
+        "queue worker",
+        "async task",
+        "job processing"
+      ],
+      "synonyms": [
+        "task queue",
+        "scheduled job",
+        "worker process"
+      ],
+      "required_tools": [
+        "queue",
+        "scheduler",
+        "database"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "cloud-serverless-apps",
+      "domain": "cloud",
+      "module_id": "domain-cloud",
+      "name": "Serverless application architecture",
+      "description": "Design and implement serverless APIs and applications using Workers, functions, request routing, and edge execution.",
+      "triggers": [
+        "Cloudflare Workers",
+        "serverless API",
+        "edge function",
+        "worker deployment"
+      ],
+      "synonyms": [
+        "edge compute",
+        "serverless app",
+        "cloud function"
+      ],
+      "required_tools": [
+        "cloud-provider",
+        "http-api"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "cloud-storage",
+      "domain": "cloud",
+      "module_id": "domain-cloud",
+      "name": "Cloud storage architecture",
+      "description": "Choose object, file, and database storage based on access patterns, size, retention, security, and cost.",
+      "triggers": [
+        "cloud storage",
+        "object storage",
+        "file storage",
+        "R2 bucket"
+      ],
+      "synonyms": [
+        "blob storage",
+        "remote storage",
+        "asset storage"
+      ],
+      "required_tools": [
+        "cloud-storage",
+        "database"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "cloud-networking",
+      "domain": "cloud",
+      "module_id": "domain-cloud",
+      "name": "Cloud networking and connectivity",
+      "description": "Design DNS, routes, service bindings, secure origins, network boundaries, and connectivity diagnostics.",
+      "triggers": [
+        "cloud networking",
+        "DNS",
+        "service binding",
+        "network diagnostics"
+      ],
+      "synonyms": [
+        "networking",
+        "routing",
+        "connectivity"
+      ],
+      "required_tools": [
+        "cloud-provider",
+        "network-tools"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "cloud-operations-cost",
+      "domain": "cloud",
+      "module_id": "domain-cloud",
+      "name": "Cloud operations and cost control",
+      "description": "Set quotas, observability, health checks, rate limits, backups, retention, and cost ceilings for cloud workloads.",
+      "triggers": [
+        "cloud monitoring",
+        "cloud cost",
+        "rate limiting",
+        "service health"
+      ],
+      "synonyms": [
+        "FinOps",
+        "cloud operations",
+        "resource monitoring"
+      ],
+      "required_tools": [
+        "cloud-provider",
+        "observability"
+      ],
+      "risk_level": "elevated",
+      "approval_required": true,
+      "status": "experimental"
+    },
+    {
+      "id": "devops-ci-cd",
+      "domain": "devops",
+      "module_id": "domain-devops",
+      "name": "CI and CD pipelines",
+      "description": "Build automated lint, test, security, build, and release pipelines with controlled promotion and rollback.",
+      "triggers": [
+        "GitHub Actions",
+        "CI pipeline",
+        "CD pipeline",
+        "automated tests"
+      ],
+      "synonyms": [
+        "continuous integration",
+        "continuous deployment",
+        "release pipeline"
+      ],
+      "required_tools": [
+        "git",
+        "ci-runner",
+        "artifact-store"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "devops-containers",
+      "domain": "devops",
+      "module_id": "domain-devops",
+      "name": "Container build and delivery",
+      "description": "Create reproducible container images, define health checks, configure registries, and inspect image provenance.",
+      "triggers": [
+        "Docker",
+        "container image",
+        "container build",
+        "image registry"
+      ],
+      "synonyms": [
+        "OCI image",
+        "containerization",
+        "container delivery"
+      ],
+      "required_tools": [
+        "container-runtime",
+        "registry"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "devops-infrastructure",
+      "domain": "devops",
+      "module_id": "domain-devops",
+      "name": "Infrastructure as code",
+      "description": "Describe cloud resources declaratively, review change plans, manage state, and keep environments reproducible.",
+      "triggers": [
+        "infrastructure as code",
+        "Terraform",
+        "IaC",
+        "infrastructure plan"
+      ],
+      "synonyms": [
+        "cloud provisioning",
+        "declarative infrastructure",
+        "resource template"
+      ],
+      "required_tools": [
+        "iac-tool",
+        "cloud-provider"
+      ],
+      "risk_level": "elevated",
+      "approval_required": true,
+      "status": "experimental"
+    },
+    {
+      "id": "devops-observability",
+      "domain": "devops",
+      "module_id": "domain-devops",
+      "name": "Observability and reliability",
+      "description": "Instrument logs, metrics, traces, alerts, service-level indicators, and failure investigations.",
+      "triggers": [
+        "observability",
+        "distributed tracing",
+        "metrics and logs",
+        "reliability monitoring"
+      ],
+      "synonyms": [
+        "telemetry",
+        "SRE",
+        "service monitoring"
+      ],
+      "required_tools": [
+        "logging",
+        "metrics",
+        "tracing"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "databases-schema",
+      "domain": "databases",
+      "module_id": "domain-databases",
+      "name": "Database schema design",
+      "description": "Model relational and document data, constraints, indexes, relations, tenancy, and data lifecycle requirements.",
+      "triggers": [
+        "database schema",
+        "PostgreSQL schema",
+        "table design",
+        "data model"
+      ],
+      "synonyms": [
+        "schema modeling",
+        "database structure",
+        "relational design"
+      ],
+      "required_tools": [
+        "database",
+        "sql"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "databases-query",
+      "domain": "databases",
+      "module_id": "domain-databases",
+      "name": "SQL query engineering",
+      "description": "Write, explain, optimize, and safely parameterize SQL queries for accurate and efficient data access.",
+      "triggers": [
+        "SQL query",
+        "query optimization",
+        "PostgreSQL query",
+        "database joins"
+      ],
+      "synonyms": [
+        "SQL engineering",
+        "query plan",
+        "database query"
+      ],
+      "required_tools": [
+        "database",
+        "sql-profiler"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "databases-migrations",
+      "domain": "databases",
+      "module_id": "domain-databases",
+      "name": "Database migrations and indexing",
+      "description": "Plan versioned schema migrations, indexes, rollback, compatibility windows, and low-risk data changes.",
+      "triggers": [
+        "database migration",
+        "index design",
+        "schema migration",
+        "rollback migration"
+      ],
+      "synonyms": [
+        "schema evolution",
+        "index optimization",
+        "database upgrade"
+      ],
+      "required_tools": [
+        "database",
+        "migration-tool"
+      ],
+      "risk_level": "elevated",
+      "approval_required": true,
+      "status": "experimental"
+    },
+    {
+      "id": "databases-access-security",
+      "domain": "databases",
+      "module_id": "domain-databases",
+      "name": "Database access and security",
+      "description": "Design least-privilege roles, row-level security, secret handling, backups, and access audits.",
+      "triggers": [
+        "Row Level Security",
+        "RLS policy",
+        "database permissions",
+        "database security"
+      ],
+      "synonyms": [
+        "database authorization",
+        "tenant isolation",
+        "access policy"
+      ],
+      "required_tools": [
+        "database",
+        "identity-provider"
+      ],
+      "risk_level": "elevated",
+      "approval_required": true,
+      "status": "experimental"
+    },
+    {
+      "id": "research-repository",
+      "domain": "research",
+      "module_id": "domain-research",
+      "name": "GitHub repository research",
+      "description": "Find and compare repositories by capability, maintenance, releases, documentation, license scope, and overlap.",
+      "triggers": [
+        "GitHub repository research",
+        "find GitHub project",
+        "repository comparison",
+        "open source project"
+      ],
+      "synonyms": [
+        "repo discovery",
+        "GitHub search",
+        "source evaluation"
+      ],
+      "required_tools": [
+        "github-api",
+        "web-search"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "research-web",
+      "domain": "research",
+      "module_id": "domain-research",
+      "name": "Web research and synthesis",
+      "description": "Answer research questions using authoritative sources, cross-check claims, compare dates, and cite evidence.",
+      "triggers": [
+        "deep research",
+        "web research",
+        "source synthesis",
+        "online research"
+      ],
+      "synonyms": [
+        "internet research",
+        "evidence synthesis",
+        "research report"
+      ],
+      "required_tools": [
+        "web-search",
+        "browser"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "research-factcheck",
+      "domain": "research",
+      "module_id": "domain-research",
+      "name": "Fact checking and source validation",
+      "description": "Verify concrete claims against primary sources, identify uncertainty, and distinguish confirmed facts from estimates.",
+      "triggers": [
+        "fact check",
+        "verify claim",
+        "source verification",
+        "primary source"
+      ],
+      "synonyms": [
+        "claim validation",
+        "evidence check",
+        "fact verification"
+      ],
+      "required_tools": [
+        "web-search",
+        "documentation"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "research-literature",
+      "domain": "research",
+      "module_id": "domain-research",
+      "name": "Literature and documentation review",
+      "description": "Review technical papers, standards, specifications, and official documentation with traceable summaries.",
+      "triggers": [
+        "literature review",
+        "technical paper",
+        "specification review",
+        "documentation review"
+      ],
+      "synonyms": [
+        "paper analysis",
+        "standards review",
+        "technical research"
+      ],
+      "required_tools": [
+        "web-search",
+        "document-reader"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "uiux-design-systems",
+      "domain": "ui-ux",
+      "module_id": "domain-ui-ux",
+      "name": "Design system creation",
+      "description": "Define design tokens, component rules, variants, interaction states, and accessible reusable patterns.",
+      "triggers": [
+        "design system",
+        "Figma components",
+        "design tokens",
+        "UI library"
+      ],
+      "synonyms": [
+        "component variants",
+        "visual system",
+        "brand system"
+      ],
+      "required_tools": [
+        "figma",
+        "design-tool"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "uiux-wireframes",
+      "domain": "ui-ux",
+      "module_id": "domain-ui-ux",
+      "name": "Wireframing and user journeys",
+      "description": "Map user goals, flows, information architecture, screen hierarchy, and low-fidelity wireframes.",
+      "triggers": [
+        "wireframe",
+        "user journey",
+        "information architecture",
+        "UX flow"
+      ],
+      "synonyms": [
+        "screen flow",
+        "product flow",
+        "UX planning"
+      ],
+      "required_tools": [
+        "figma",
+        "diagram-tool"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "uiux-prototyping",
+      "domain": "ui-ux",
+      "module_id": "domain-ui-ux",
+      "name": "Interactive prototyping",
+      "description": "Create and evaluate prototypes, transitions, component states, and realistic task walkthroughs.",
+      "triggers": [
+        "Figma prototype",
+        "interactive prototype",
+        "prototype testing",
+        "interaction design"
+      ],
+      "synonyms": [
+        "clickable prototype",
+        "screen prototype",
+        "motion flow"
+      ],
+      "required_tools": [
+        "figma",
+        "prototype-tool"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "uiux-usability",
+      "domain": "ui-ux",
+      "module_id": "domain-ui-ux",
+      "name": "Usability and accessibility review",
+      "description": "Inspect clarity, navigation, error prevention, responsiveness, readability, and accessibility against user tasks.",
+      "triggers": [
+        "usability testing",
+        "UX audit",
+        "accessibility review",
+        "interface audit"
+      ],
+      "synonyms": [
+        "heuristic evaluation",
+        "inclusive UX",
+        "design review"
+      ],
+      "required_tools": [
+        "browser",
+        "accessibility-checker"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "browser-inspection",
+      "domain": "browser",
+      "module_id": "domain-browser",
+      "name": "Structured browser inspection",
+      "description": "Inspect pages, accessibility trees, links, forms, and page state without guessing from coordinates.",
+      "triggers": [
+        "browser inspect",
+        "DOM inspection",
+        "accessibility snapshot",
+        "web page analysis"
+      ],
+      "synonyms": [
+        "page structure",
+        "web observation",
+        "browser snapshot"
+      ],
+      "required_tools": [
+        "browser",
+        "accessibility-tree"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "browser-automation",
+      "domain": "browser",
+      "module_id": "domain-browser",
+      "name": "Authorized browser automation",
+      "description": "Automate approved browser actions with explicit user scope, stable selectors, waits, and verified postconditions.",
+      "triggers": [
+        "browser automation",
+        "Playwright",
+        "web workflow automation",
+        "browser actions"
+      ],
+      "synonyms": [
+        "web automation",
+        "browser agent",
+        "page interaction"
+      ],
+      "required_tools": [
+        "browser",
+        "playwright"
+      ],
+      "risk_level": "elevated",
+      "approval_required": true,
+      "status": "experimental"
+    },
+    {
+      "id": "browser-web-testing",
+      "domain": "browser",
+      "module_id": "domain-browser",
+      "name": "Browser-based web testing",
+      "description": "Test routes, forms, navigation, accessibility, visual state, and regression behavior in isolated test environments.",
+      "triggers": [
+        "Playwright testing",
+        "browser test",
+        "end to end web test",
+        "E2E browser"
+      ],
+      "synonyms": [
+        "web QA",
+        "UI test",
+        "browser regression"
+      ],
+      "required_tools": [
+        "playwright",
+        "test-runner"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "browser-data-extraction",
+      "domain": "browser",
+      "module_id": "domain-browser",
+      "name": "Public web data extraction",
+      "description": "Extract permitted public page information using site terms, robots guidance, rate limits, and attribution.",
+      "triggers": [
+        "web scraping",
+        "public page extraction",
+        "structured web data",
+        "website metadata"
+      ],
+      "synonyms": [
+        "web extraction",
+        "page parser",
+        "public data collection"
+      ],
+      "required_tools": [
+        "browser",
+        "parser"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "desktop-accessibility",
+      "domain": "desktop",
+      "module_id": "domain-desktop",
+      "name": "Desktop accessibility inspection",
+      "description": "Inspect desktop UI Automation trees, roles, labels, window state, and actionable elements using read-only observation.",
+      "triggers": [
+        "Windows UI Automation",
+        "accessibility tree",
+        "FlaUI snapshot",
+        "desktop inspection"
+      ],
+      "synonyms": [
+        "semantic UI inspection",
+        "UIA tree",
+        "accessible controls"
+      ],
+      "required_tools": [
+        "desktop-uia"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "desktop-automation",
+      "domain": "desktop",
+      "module_id": "domain-desktop",
+      "name": "Desktop workflow automation",
+      "description": "Automate explicitly authorized desktop workflows using semantic selectors, bounded actions, and visible confirmation.",
+      "triggers": [
+        "desktop automation",
+        "Windows UI automation",
+        "mouse keyboard workflow",
+        "application automation"
+      ],
+      "synonyms": [
+        "desktop agent",
+        "UI automation",
+        "window control"
+      ],
+      "required_tools": [
+        "desktop-uia",
+        "desktop-agent"
+      ],
+      "risk_level": "elevated",
+      "approval_required": true,
+      "status": "experimental"
+    },
+    {
+      "id": "desktop-window-management",
+      "domain": "desktop",
+      "module_id": "domain-desktop",
+      "name": "Desktop application and window management",
+      "description": "Identify application windows, inspect foreground state, and manage approved window workflows without obscuring the desktop.",
+      "triggers": [
+        "window management",
+        "desktop app control",
+        "window state",
+        "application focus"
+      ],
+      "synonyms": [
+        "window automation",
+        "application navigation",
+        "desktop workflow"
+      ],
+      "required_tools": [
+        "desktop-uia"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "desktop-verification",
+      "domain": "desktop",
+      "module_id": "domain-desktop",
+      "name": "Desktop workflow verification",
+      "description": "Verify application state changes through semantic UI evidence, application messages, and reversible checks.",
+      "triggers": [
+        "desktop state verification",
+        "UI postcondition",
+        "application state",
+        "desktop test"
+      ],
+      "synonyms": [
+        "UI verification",
+        "desktop QA",
+        "workflow evidence"
+      ],
+      "required_tools": [
+        "desktop-uia",
+        "test-runner"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "mobile-android",
+      "domain": "mobile",
+      "module_id": "domain-mobile",
+      "name": "Android application development",
+      "description": "Build Android application architecture, screens, lifecycle handling, permissions, and repeatable testing workflows.",
+      "triggers": [
+        "Android app",
+        "Android development",
+        "Kotlin app",
+        "APK development"
+      ],
+      "synonyms": [
+        "mobile Android",
+        "Android Studio workflow",
+        "Android UI"
+      ],
+      "required_tools": [
+        "android-sdk",
+        "mobile-test"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "mobile-ios",
+      "domain": "mobile",
+      "module_id": "domain-mobile",
+      "name": "iOS application development",
+      "description": "Plan and implement iOS application interfaces, lifecycle, native integrations, privacy prompts, and testing workflows.",
+      "triggers": [
+        "iOS app",
+        "Swift app",
+        "iPhone application",
+        "iOS development"
+      ],
+      "synonyms": [
+        "Apple mobile app",
+        "iOS UI",
+        "iOS SDK"
+      ],
+      "required_tools": [
+        "ios-sdk",
+        "mobile-test"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "mobile-cross-platform",
+      "domain": "mobile",
+      "module_id": "domain-mobile",
+      "name": "Cross-platform mobile development",
+      "description": "Build shared mobile applications using Flutter or React Native with platform-specific integrations and testing.",
+      "triggers": [
+        "Flutter",
+        "React Native",
+        "cross platform mobile",
+        "Expo app"
+      ],
+      "synonyms": [
+        "hybrid app",
+        "shared mobile code",
+        "mobile framework"
+      ],
+      "required_tools": [
+        "mobile-framework",
+        "mobile-test"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "mobile-permissions",
+      "domain": "mobile",
+      "module_id": "domain-mobile",
+      "name": "Mobile permissions and device testing",
+      "description": "Design clear permission journeys and test app behavior across denied, granted, limited, and revoked permission states.",
+      "triggers": [
+        "Android accessibility permission",
+        "mobile permissions",
+        "permission testing",
+        "app permissions"
+      ],
+      "synonyms": [
+        "permission flow",
+        "device settings",
+        "accessibility service"
+      ],
+      "required_tools": [
+        "mobile-sdk",
+        "device-test"
+      ],
+      "risk_level": "elevated",
+      "approval_required": true,
+      "status": "experimental"
+    },
+    {
+      "id": "media-image",
+      "domain": "media",
+      "module_id": "domain-media",
+      "name": "Image generation and editing workflows",
+      "description": "Plan image creation, image editing, aspect ratios, asset review, and provenance-aware creative workflows.",
+      "triggers": [
+        "image generation",
+        "image editing",
+        "image asset pipeline",
+        "visual asset"
+      ],
+      "synonyms": [
+        "AI image",
+        "illustration",
+        "image workflow"
+      ],
+      "required_tools": [
+        "image-model",
+        "asset-storage"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "media-video",
+      "domain": "media",
+      "module_id": "domain-media",
+      "name": "Video production workflows",
+      "description": "Plan video scripts, storyboards, editing stages, subtitles, output formats, and review checkpoints.",
+      "triggers": [
+        "video editing",
+        "video production",
+        "storyboard",
+        "video workflow"
+      ],
+      "synonyms": [
+        "short video",
+        "video content",
+        "media editing"
+      ],
+      "required_tools": [
+        "video-tool",
+        "media-storage"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "media-audio",
+      "domain": "media",
+      "module_id": "domain-media",
+      "name": "Audio and speech processing",
+      "description": "Handle audio capture, transcription, speech synthesis, segmentation, and accessible audio output workflows.",
+      "triggers": [
+        "speech to text",
+        "text to speech",
+        "audio transcription",
+        "voice synthesis"
+      ],
+      "synonyms": [
+        "ASR",
+        "TTS",
+        "audio processing"
+      ],
+      "required_tools": [
+        "audio-model",
+        "media-storage"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "media-assets",
+      "domain": "media",
+      "module_id": "domain-media",
+      "name": "Creative asset production",
+      "description": "Prepare thumbnails, visual variants, captions, reusable media templates, and production asset checklists.",
+      "triggers": [
+        "thumbnail design",
+        "creative assets",
+        "media templates",
+        "caption design"
+      ],
+      "synonyms": [
+        "content assets",
+        "visual collateral",
+        "creative production"
+      ],
+      "required_tools": [
+        "design-tool",
+        "asset-storage"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "youtube-channel-research",
+      "domain": "youtube",
+      "module_id": "domain-youtube",
+      "name": "YouTube channel and video research",
+      "description": "Analyze public channel information, video metadata, topic patterns, and source-grounded competitor research.",
+      "triggers": [
+        "YouTube channel research",
+        "video metadata",
+        "channel analysis",
+        "public channel audit"
+      ],
+      "synonyms": [
+        "channel discovery",
+        "video research",
+        "creator research"
+      ],
+      "required_tools": [
+        "youtube-data-api",
+        "web-search"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "youtube-analytics",
+      "domain": "youtube",
+      "module_id": "domain-youtube",
+      "name": "YouTube analytics and reporting",
+      "description": "Interpret authorized channel analytics, audience metrics, retention summaries, and time-series performance.",
+      "triggers": [
+        "YouTube Analytics",
+        "channel metrics",
+        "audience retention",
+        "video performance"
+      ],
+      "synonyms": [
+        "creator analytics",
+        "channel dashboard",
+        "watch time"
+      ],
+      "required_tools": [
+        "youtube-analytics-api",
+        "data-analysis"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "youtube-content",
+      "domain": "youtube",
+      "module_id": "domain-youtube",
+      "name": "YouTube content strategy",
+      "description": "Plan audience-relevant topics, scripts, production calendars, titles, descriptions, and measurable experiments.",
+      "triggers": [
+        "YouTube content strategy",
+        "video ideas",
+        "script planning",
+        "content calendar"
+      ],
+      "synonyms": [
+        "creator planning",
+        "video SEO",
+        "topic research"
+      ],
+      "required_tools": [
+        "web-search",
+        "document-tool"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "youtube-publishing",
+      "domain": "youtube",
+      "module_id": "domain-youtube",
+      "name": "YouTube publishing workflow",
+      "description": "Prepare metadata and schedule a publishing checklist while requiring account authorization and explicit confirmation before publishing.",
+      "triggers": [
+        "YouTube publishing",
+        "upload video",
+        "schedule YouTube video",
+        "publish channel content"
+      ],
+      "synonyms": [
+        "video upload",
+        "channel publishing",
+        "release video"
+      ],
+      "required_tools": [
+        "youtube-data-api",
+        "account-auth"
+      ],
+      "risk_level": "elevated",
+      "approval_required": true,
+      "status": "experimental"
+    },
+    {
+      "id": "automation-api",
+      "domain": "automation",
+      "module_id": "domain-automation",
+      "name": "API and webhook automation",
+      "description": "Connect services with typed payloads, scoped tokens, webhook validation, retries, idempotency, and audit logs.",
+      "triggers": [
+        "API automation",
+        "webhook workflow",
+        "service automation",
+        "REST integration"
+      ],
+      "synonyms": [
+        "cross app workflow",
+        "event integration",
+        "API pipeline"
+      ],
+      "required_tools": [
+        "api",
+        "webhook",
+        "secrets"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "automation-mcp",
+      "domain": "automation",
+      "module_id": "domain-automation",
+      "name": "MCP server and client integration",
+      "description": "Discover, configure, inspect, and connect MCP servers with tool schemas, transport compatibility, and scoped authorization.",
+      "triggers": [
+        "MCP server",
+        "MCP client",
+        "MCP integration",
+        "Model Context Protocol"
+      ],
+      "synonyms": [
+        "tool server",
+        "remote MCP",
+        "MCP connector"
+      ],
+      "required_tools": [
+        "mcp",
+        "oauth",
+        "http-client"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "automation-event-driven",
+      "domain": "automation",
+      "module_id": "domain-automation",
+      "name": "Event-driven workflow design",
+      "description": "Design event triggers, queues, state transitions, retries, deduplication, and failure recovery.",
+      "triggers": [
+        "event driven automation",
+        "event trigger",
+        "queue workflow",
+        "webhook event"
+      ],
+      "synonyms": [
+        "event processing",
+        "message-driven workflow",
+        "automation trigger"
+      ],
+      "required_tools": [
+        "queue",
+        "webhook",
+        "workflow-engine"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "automation-scheduling",
+      "domain": "automation",
+      "module_id": "domain-automation",
+      "name": "Scheduled workflow management",
+      "description": "Plan recurring jobs, timezone handling, missed-run behavior, idempotent execution, and user-controlled cancellation.",
+      "triggers": [
+        "scheduled workflow",
+        "cron job",
+        "recurring task",
+        "workflow schedule"
+      ],
+      "synonyms": [
+        "periodic automation",
+        "task scheduler",
+        "scheduled run"
+      ],
+      "required_tools": [
+        "scheduler",
+        "workflow-engine"
+      ],
+      "risk_level": "elevated",
+      "approval_required": true,
+      "status": "experimental"
+    },
+    {
+      "id": "documents-pdf",
+      "domain": "documents",
+      "module_id": "domain-documents",
+      "name": "PDF processing and verification",
+      "description": "Extract, generate, compare, and validate PDFs while preserving page references, structure, and source attribution.",
+      "triggers": [
+        "PDF processing",
+        "PDF extraction",
+        "create PDF",
+        "PDF validation"
+      ],
+      "synonyms": [
+        "PDF document",
+        "document parsing",
+        "PDF report"
+      ],
+      "required_tools": [
+        "pdf-tool",
+        "document-storage"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "documents-office",
+      "domain": "documents",
+      "module_id": "domain-documents",
+      "name": "Office document workflows",
+      "description": "Create and edit Word and PowerPoint documents with structured content, accessible layout, and format checks.",
+      "triggers": [
+        "DOCX",
+        "Word document",
+        "PowerPoint",
+        "PPTX document"
+      ],
+      "synonyms": [
+        "office document",
+        "presentation creation",
+        "document editing"
+      ],
+      "required_tools": [
+        "office-tool",
+        "document-storage"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "documents-spreadsheets",
+      "domain": "documents",
+      "module_id": "domain-documents",
+      "name": "Spreadsheet analysis and generation",
+      "description": "Build and validate spreadsheets with formulas, typed data, data validation, formatting, and reproducible analysis.",
+      "triggers": [
+        "Excel",
+        "XLSX",
+        "spreadsheet analysis",
+        "spreadsheet formulas"
+      ],
+      "synonyms": [
+        "workbook",
+        "tabular data",
+        "spreadsheet automation"
+      ],
+      "required_tools": [
+        "spreadsheet-tool",
+        "data-analysis"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "documents-knowledge",
+      "domain": "documents",
+      "module_id": "domain-documents",
+      "name": "Knowledge base and technical documentation",
+      "description": "Structure technical documentation, indexes, changelogs, reference pages, and searchable knowledge bases.",
+      "triggers": [
+        "technical documentation",
+        "knowledge base",
+        "README writing",
+        "documentation site"
+      ],
+      "synonyms": [
+        "docs authoring",
+        "knowledge management",
+        "reference manual"
+      ],
+      "required_tools": [
+        "markdown",
+        "documentation-tool"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "data-cleaning",
+      "domain": "data-science",
+      "module_id": "domain-data-science",
+      "name": "Data cleaning and preparation",
+      "description": "Validate datasets, normalize fields, handle missing values, detect anomalies, and produce reproducible transformations.",
+      "triggers": [
+        "data cleaning",
+        "data preprocessing",
+        "dataset validation",
+        "data normalization"
+      ],
+      "synonyms": [
+        "data wrangling",
+        "ETL preparation",
+        "dataset quality"
+      ],
+      "required_tools": [
+        "python",
+        "data-tool"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "data-statistics",
+      "domain": "data-science",
+      "module_id": "domain-data-science",
+      "name": "Statistical analysis",
+      "description": "Choose suitable descriptive and inferential methods, check assumptions, quantify uncertainty, and explain limitations.",
+      "triggers": [
+        "statistical analysis",
+        "descriptive statistics",
+        "hypothesis test",
+        "confidence interval"
+      ],
+      "synonyms": [
+        "data statistics",
+        "statistical modeling",
+        "quantitative analysis"
+      ],
+      "required_tools": [
+        "python",
+        "statistics-tool"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "data-visualization",
+      "domain": "data-science",
+      "module_id": "domain-data-science",
+      "name": "Data visualization and dashboards",
+      "description": "Create honest charts and dashboards with accurate units, labels, accessible presentation, and clear uncertainty.",
+      "triggers": [
+        "data visualization",
+        "dashboard",
+        "chart design",
+        "analytics chart"
+      ],
+      "synonyms": [
+        "plotting",
+        "business dashboard",
+        "data reporting"
+      ],
+      "required_tools": [
+        "visualization-tool",
+        "data-analysis"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "data-pipelines",
+      "domain": "data-science",
+      "module_id": "domain-data-science",
+      "name": "Data pipelines and ETL",
+      "description": "Design extract, transform, and load pipelines with schema checks, incremental processing, lineage, and monitoring.",
+      "triggers": [
+        "data pipeline",
+        "ETL",
+        "ELT",
+        "data ingestion"
+      ],
+      "synonyms": [
+        "batch pipeline",
+        "data integration",
+        "pipeline orchestration"
+      ],
+      "required_tools": [
+        "python",
+        "database",
+        "scheduler"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "security-code-review",
+      "domain": "security-analysis",
+      "module_id": "domain-security-analysis",
+      "name": "Secure code review",
+      "description": "Review owned or authorized code for common security weaknesses, unsafe defaults, secrets exposure, and remediation options.",
+      "triggers": [
+        "secure code review",
+        "OWASP code review",
+        "security bug review",
+        "secret scan"
+      ],
+      "synonyms": [
+        "defensive code analysis",
+        "secure coding audit",
+        "source review"
+      ],
+      "required_tools": [
+        "static-analysis",
+        "dependency-audit"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "security-dependencies",
+      "domain": "security-analysis",
+      "module_id": "domain-security-analysis",
+      "name": "Dependency and supply-chain audit",
+      "description": "Inspect dependency versions, advisories, provenance, lockfiles, license risks, and update paths.",
+      "triggers": [
+        "dependency audit",
+        "software supply chain",
+        "CVE review",
+        "package vulnerability"
+      ],
+      "synonyms": [
+        "SBOM",
+        "dependency security",
+        "license audit"
+      ],
+      "required_tools": [
+        "dependency-scanner",
+        "sbom-tool"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "security-authorized-analysis",
+      "domain": "security-analysis",
+      "module_id": "domain-security-analysis",
+      "name": "Authorized application analysis",
+      "description": "Analyze software that the user owns or is expressly authorized to inspect, document behavior, and identify defensive improvements.",
+      "triggers": [
+        "authorized app analysis",
+        "owned application analysis",
+        "software behavior analysis",
+        "reverse engineering owned software"
+      ],
+      "synonyms": [
+        "authorized reverse engineering",
+        "binary analysis for interoperability",
+        "application inspection"
+      ],
+      "required_tools": [
+        "static-analysis",
+        "debugger"
+      ],
+      "risk_level": "elevated",
+      "approval_required": true,
+      "status": "experimental"
+    },
+    {
+      "id": "security-remediation",
+      "domain": "security-analysis",
+      "module_id": "domain-security-analysis",
+      "name": "Security remediation planning",
+      "description": "Prioritize defensive fixes, define safe regression checks, update dependencies, and document residual risk.",
+      "triggers": [
+        "security remediation",
+        "fix vulnerability",
+        "secure patch",
+        "defensive mitigation"
+      ],
+      "synonyms": [
+        "vulnerability fix",
+        "hardening",
+        "security patching"
+      ],
+      "required_tools": [
+        "code-editor",
+        "test-runner"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "testing-unit-integration",
+      "domain": "testing-qa",
+      "module_id": "domain-testing-qa",
+      "name": "Unit and integration testing",
+      "description": "Define test boundaries, fixtures, mocks, integration contracts, and deterministic unit or service tests.",
+      "triggers": [
+        "unit test",
+        "integration test",
+        "pytest",
+        "test fixture"
+      ],
+      "synonyms": [
+        "automated test",
+        "component test",
+        "service test"
+      ],
+      "required_tools": [
+        "test-runner",
+        "mocking"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "testing-e2e",
+      "domain": "testing-qa",
+      "module_id": "domain-testing-qa",
+      "name": "End-to-end and browser testing",
+      "description": "Validate user journeys across browser or application boundaries with stable selectors and useful failure evidence.",
+      "triggers": [
+        "end to end test",
+        "E2E testing",
+        "Playwright test",
+        "browser regression"
+      ],
+      "synonyms": [
+        "system test",
+        "workflow test",
+        "UI regression"
+      ],
+      "required_tools": [
+        "playwright",
+        "test-runner"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "testing-performance",
+      "domain": "testing-qa",
+      "module_id": "domain-testing-qa",
+      "name": "Performance and load evaluation",
+      "description": "Measure latency, throughput, resource use, and scaling behavior with safe, bounded test environments.",
+      "triggers": [
+        "performance test",
+        "load test",
+        "latency test",
+        "benchmark service"
+      ],
+      "synonyms": [
+        "stress benchmark",
+        "scalability testing",
+        "profiling"
+      ],
+      "required_tools": [
+        "performance-tool",
+        "test-runner"
+      ],
+      "risk_level": "moderate",
+      "approval_required": true,
+      "status": "experimental"
+    },
+    {
+      "id": "testing-accessibility",
+      "domain": "testing-qa",
+      "module_id": "domain-testing-qa",
+      "name": "Accessibility and regression testing",
+      "description": "Check keyboard paths, semantic controls, contrast, labels, and regressions across supported devices and browsers.",
+      "triggers": [
+        "accessibility test",
+        "a11y testing",
+        "regression test",
+        "visual regression"
+      ],
+      "synonyms": [
+        "screen reader test",
+        "UI audit",
+        "compatibility test"
+      ],
+      "required_tools": [
+        "accessibility-checker",
+        "test-runner"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "education-explanations",
+      "domain": "education",
+      "module_id": "domain-education",
+      "name": "Age-appropriate explanations and tutoring",
+      "description": "Explain concepts using clear, curriculum-aware steps, examples, and supportive checks for understanding.",
+      "triggers": [
+        "explain lesson",
+        "tutor",
+        "concept explanation",
+        "NCERT explanation"
+      ],
+      "synonyms": [
+        "learning support",
+        "subject help",
+        "lesson explanation"
+      ],
+      "required_tools": [
+        "document-tool"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "education-practice",
+      "domain": "education",
+      "module_id": "domain-education",
+      "name": "Practice and assessment materials",
+      "description": "Create original practice questions, worked examples, rubrics, and answer keys at the requested learning level.",
+      "triggers": [
+        "practice questions",
+        "worksheet",
+        "model paper",
+        "answer key"
+      ],
+      "synonyms": [
+        "study exercises",
+        "revision questions",
+        "assessment material"
+      ],
+      "required_tools": [
+        "document-tool"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "education-study-planning",
+      "domain": "education",
+      "module_id": "domain-education",
+      "name": "Study planning and revision",
+      "description": "Organize a realistic study schedule, topic checklist, spaced revision, and progress review.",
+      "triggers": [
+        "study plan",
+        "revision plan",
+        "study schedule",
+        "exam preparation"
+      ],
+      "synonyms": [
+        "learning plan",
+        "revision timetable",
+        "study routine"
+      ],
+      "required_tools": [
+        "calendar",
+        "document-tool"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "education-curriculum",
+      "domain": "education",
+      "module_id": "domain-education",
+      "name": "Curriculum and learning-resource alignment",
+      "description": "Map lessons and learning resources to a stated syllabus, grade level, learning objectives, and source material.",
+      "triggers": [
+        "NCERT curriculum",
+        "syllabus mapping",
+        "learning objectives",
+        "curriculum alignment"
+      ],
+      "synonyms": [
+        "school curriculum",
+        "course outcome",
+        "chapter alignment"
+      ],
+      "required_tools": [
+        "web-search",
+        "document-tool"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "business-product",
+      "domain": "business",
+      "module_id": "domain-business",
+      "name": "Product and project planning",
+      "description": "Define user needs, scope, milestones, risks, acceptance criteria, and an incremental product roadmap.",
+      "triggers": [
+        "product planning",
+        "product roadmap",
+        "project scope",
+        "acceptance criteria"
+      ],
+      "synonyms": [
+        "product strategy",
+        "feature planning",
+        "delivery plan"
+      ],
+      "required_tools": [
+        "project-tool",
+        "documentation-tool"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "business-project-ops",
+      "domain": "business",
+      "module_id": "domain-business",
+      "name": "Project and team operations",
+      "description": "Track tasks, dependencies, decisions, risks, handoffs, and status using lightweight repeatable processes.",
+      "triggers": [
+        "project management",
+        "task tracking",
+        "team operations",
+        "project status"
+      ],
+      "synonyms": [
+        "delivery management",
+        "work coordination",
+        "project workflow"
+      ],
+      "required_tools": [
+        "project-tool",
+        "documentation-tool"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "business-market",
+      "domain": "business",
+      "module_id": "domain-business",
+      "name": "Market and competitive research",
+      "description": "Research public market information, compare products, identify evidence gaps, and present sourced findings.",
+      "triggers": [
+        "market research",
+        "competitor analysis",
+        "product comparison",
+        "industry research"
+      ],
+      "synonyms": [
+        "competitive intelligence",
+        "market scan",
+        "customer research"
+      ],
+      "required_tools": [
+        "web-search",
+        "data-analysis"
+      ],
+      "risk_level": "low",
+      "approval_required": false,
+      "status": "experimental"
+    },
+    {
+      "id": "business-operations",
+      "domain": "business",
+      "module_id": "domain-business",
+      "name": "Business process and operations",
+      "description": "Map operational workflows, identify bottlenecks, document controls, and suggest measurable process improvements.",
+      "triggers": [
+        "business process",
+        "operations workflow",
+        "process improvement",
+        "workflow mapping"
+      ],
+      "synonyms": [
+        "operations planning",
+        "process audit",
+        "business automation"
+      ],
+      "required_tools": [
+        "workflow-tool",
+        "documentation-tool"
+      ],
+      "risk_level": "moderate",
+      "approval_required": false,
+      "status": "experimental"
+    }
+  ]
+}
