@@ -308,7 +308,7 @@ function makeMcpServer(env: Env): McpServer {
       description: "List the supported Universal Agent domains and their descriptions.",
       inputSchema: {},
     },
-    async () => {
+    async (_args) => {
       const registry = await loadRegistry(env);
       return { content: [{ type: "text", text: JSON.stringify(registry.domains, null, 2) }] };
     },
