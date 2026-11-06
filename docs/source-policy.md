@@ -12,3 +12,10 @@ Verify the exact file, author, immutable revision, applicable license, nested no
 
 ## Defaults
 Unknown license means reference-only. Source-available material is not redistributable by default. Mixed-license repositories require path-by-path review. Never execute imported scripts during discovery. New candidates enter review and are never automatically activated.
+
+
+## Special license-scope examples
+
+- MicrosoftDocs Agent Skills uses a dual license: Skill/documentation content is CC BY 4.0 and code is MIT. Preserve attribution and use the exact license that applies to each path.
+- Community skill galleries and aggregate repositories may contain third-party contributions. A repository-level MIT license is not sufficient evidence that every contributed Skill or asset is redistributable.
+- Microsoft source candidates with unverified license status remain `review_required`; do not copy or activate them until the license is verified.
