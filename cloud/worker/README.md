@@ -10,11 +10,13 @@ This directory contains source code for a read-only REST API and stateless MCP s
   - GET /v1/domains
   - GET /v1/capabilities?query=...
   - GET /v1/modules/:module_id
+  - GET /v1/workflows/:capability_id
   - GET /v1/sources/discover?query=...
 - Exposes a stateless MCP endpoint at /mcp with four read-only tools:
   - search_capabilities
   - list_domains
   - get_skill_module
+  - get_capability_workflow
   - discover_github_sources
 
 ## Safety and data boundaries
@@ -43,4 +45,4 @@ No token is required to serve public registry data. Do not add GitHub or Cloudfl
 
 ## Development checks
 
-Run npm ci, npm run check, npm test, and npm run deploy:dry-run in the Cloud Worker directory. The deployment dry run bundles the Worker but does not publish it. A successful build is not evidence of a live deployment.
+Run npm install, npm run check, npm test, and npm run deploy:dry-run in the Cloud Worker directory. The deployment dry run bundles the Worker but does not publish it. A successful build is not evidence of a live deployment.
