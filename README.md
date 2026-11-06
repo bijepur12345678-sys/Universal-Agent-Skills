@@ -1,16 +1,16 @@
 # Universal Agent Skills
 
-**One public Agent Skill. 26 internal workflow modules. 88 granular task capabilities across 22 domains. One curated catalogue and intelligent routing model.**
+**One public Agent Skill. 26 internal workflow modules. 176 granular task capabilities across 22 domains. One curated catalogue and intelligent routing model.**
 
 Universal Agent Skills is an open-source, modular Agent Skill package. It exposes one installable entrypoint and keeps domain workflows inside that package, so compatible agents can discover one Skill rather than a confusing collection of unrelated top-level Skills.
 
-> **Status: foundation release (0.1.0-dev).** The public Skill package, 26 internal modules, 22-domain taxonomy, initial source registry, 88 experimental capability records, deterministic routing/validation CLI, and GitHub Actions checks are present. The Cloudflare Worker and remote MCP implementation are source templates until deployed and tested. Semantic embeddings, automated GitHub ingestion, and comprehensive coverage are not yet complete.
+> **Status: foundation release (0.1.0-dev).** The public Skill package, 26 internal modules, 22-domain taxonomy, initial source registry, 176 experimental capability workflow sections, deterministic routing/validation CLI, and GitHub Actions checks are present. The Cloudflare Worker and remote MCP implementation are source templates until deployed and tested. Semantic embeddings, automated GitHub ingestion, and comprehensive coverage are not yet complete.
 
 ## Core design
 
 - **One public Skill:** `skills/universal-agent/SKILL.md`.
 - **Internal modules:** `skills/universal-agent/references/modules/` contains 26 reusable domain and maintenance workflows.
-- **Granular capabilities:** `registry/capabilities.json` contains 88 task-level routing records (four per each of 22 domains). They map to existing modules; they are not 88 separate public Skills.
+- **Granular capabilities:** `registry/capabilities.json` contains 176 task-level workflow sections (eight per each of 22 domains), stored in `skills/universal-agent/references/capability-workflows.md`. Each section maps to an existing parent module; they are internal workflows, not separate public Skills.
 - **Progressive loading:** search capability metadata first, deduplicate module IDs, then load only a few relevant workflows.
 - **Canonical registry:** `registry/catalog.json` stores IDs, descriptions, domains, paths, versions, status, tags, licenses, and source references.
 - **Provenance:** `registry/sources.json` records upstream projects and observed license scope.
@@ -31,6 +31,7 @@ The source registry includes 28 upstream repositories and official documentation
 |---|---|
 | `skills/universal-agent/SKILL.md` | Single public Agent Skill |
 | `skills/universal-agent/references/module-index.md` | Compact package-local module discovery index |
+| `skills/universal-agent/references/capability-workflows.md` | 176 individually retrievable task workflow sections |
 | `skills/universal-agent/references/modules/` | 26 packaged internal workflows |
 | `registry/catalog.json` | Canonical module catalogue |
 | `registry/capabilities.json` | Granular capability records and routing metadata |
@@ -52,17 +53,18 @@ PYTHONPATH=src python -m unittest discover -s tests -v
 PYTHONPATH=src python -m universal_skills validate
 PYTHONPATH=src python -m universal_skills search --query "cloud serverless" --limit 5
 PYTHONPATH=src python -m universal_skills route --task "build a Cloudflare Workers serverless API"
+PYTHONPATH=src python -m universal_skills show-capability --id cloud-serverless-apps
 PYTHONPATH=src python -m universal_skills capability-validate
 ```
 
-Example router output includes the chosen capability, module ID, matched terms, required tools, missing tools, risk level, and approval flag. Routing is deterministic and explainable; it is not an LLM semantic reranker.
+Example router output includes the chosen capability, workflow reference, parent module ID, matched terms, required tools, missing tools, risk level, and approval flag. Load the selected workflow section by ID. Routing is deterministic and explainable; it is not an LLM semantic reranker.
 
 ## Cloud registry and MCP
 
 A stateless Cloudflare Worker source template lives in `cloud/worker/`:
 
 - Read-only REST endpoints: `/health`, `/v1/domains`, `/v1/capabilities`, and `/v1/modules/:id`.
-- Read-only MCP tools: `search_capabilities`, `list_domains`, and `get_skill_module`.
+- Read-only MCP tools: `search_capabilities`, `list_domains`, `get_skill_module`, `get_capability_workflow`, and `discover_github_sources`.
 - No shell, write, deployment, GitHub mutation, or arbitrary code execution tools are exposed.
 - The Worker serves bundled registry metadata. To return the exact module Markdown, set `SOURCE_REF` to an immutable Git commit SHA after a reviewed release is published.
 - Cloud deployment is not claimed until a Cloudflare account, scoped permissions, deployment, and live endpoint tests are completed. No API key is stored in this repository.
@@ -78,14 +80,14 @@ A long-term target is 100,000+ curated catalogue records, not 100,000 instructio
 - [x] One public Skill package with 26 internal modules across 22 domains.
 - [x] Source provenance and license review policy.
 - [x] Registry validation, keyword search, safe loading, unit tests, and CI.
-- [x] 88 granular experimental capability records and deterministic task routing.
+- [x] 176 granular experimental capability workflows and deterministic task routing.
 - [x] Read-only Cloudflare REST/MCP source template.
 - [ ] GitHub Actions verification of the complete branch.
 - [ ] Semantic embeddings, reranking, and routing benchmarks.
 - [ ] Read-only GitHub discovery/import proposals with manual review.
 - [ ] Host compatibility adapters, tested per platform.
 - [ ] Cloudflare deployment and live API/MCP smoke tests.
-- [ ] Expand reviewed skill coverage based on quality and user demand.
+- [ ] Expand reviewed skill coverage based on quality, source evidence, and user demand.
 
 ## Contributing and security
 
