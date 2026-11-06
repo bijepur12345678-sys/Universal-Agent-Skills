@@ -5,7 +5,7 @@
   "compatibility_date": "2026-11-06",
   "workers_dev": true,
   "vars": {
-    "SOURCE_REF": "REPLACE_WITH_REVIEWED_40_CHARACTER_COMMIT_SHA"
+    "SOURCE_REF": "ae61b61c4647de4283d0c0a16e301ef57d027eb4"
   },
   "observability": {
     "enabled": true
