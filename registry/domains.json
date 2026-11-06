@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "domains": [
+    {"id":"ai-ml","name":"AI & Machine Learning","description":"LLMs, model inference, evaluation, embeddings, RAG and machine learning workflows."},
+    {"id":"agentic-ai","name":"Agentic AI","description":"Agent design, planning, memory, tool selection, orchestration and multi-agent workflows."},
+    {"id":"software-engineering","name":"Software Engineering","description":"Programming, architecture, debugging, refactoring, code review and API design."},
+    {"id":"frontend","name":"Frontend Development","description":"Web interfaces, React, Next.js, Vue, CSS, accessibility and client-side performance."},
+    {"id":"backend","name":"Backend Development","description":"Services, APIs, authentication, server-side application design and integration."},
+    {"id":"cloud","name":"Cloud","description":"Cloud architecture, serverless platforms, compute, storage, networking and hosted runtimes."},
+    {"id":"devops","name":"DevOps & Infrastructure","description":"CI/CD, containers, deployment, infrastructure-as-code, monitoring and reliability."},
+    {"id":"databases","name":"Databases","description":"SQL, PostgreSQL, NoSQL, schema design, migrations, security and query optimization."},
+    {"id":"research","name":"Research","description":"Web research, source verification, literature review, evidence synthesis and fact checking."},
+    {"id":"ui-ux","name":"UI/UX & Design","description":"Design systems, wireframes, prototyping, Figma, usability and accessibility."},
+    {"id":"browser","name":"Browser Automation","description":"Browser navigation, structured page inspection, web automation and browser testing."},
+    {"id":"desktop","name":"Desktop Automation","description":"Semantic UI automation, accessibility trees, window and application workflows."},
+    {"id":"mobile","name":"Mobile Development","description":"Android, iOS, Flutter, React Native, mobile APIs and app testing."},
+    {"id":"media","name":"Media & Creative","description":"Image, video, audio, speech, transcription and creative production workflows."},
+    {"id":"youtube","name":"YouTube","description":"YouTube channel research, metadata, analytics, content planning and publishing workflows."},
+    {"id":"automation","name":"Automation & Integrations","description":"MCP, APIs, workflow automation, event triggers and cross-application processes."},
+    {"id":"documents","name":"Documents & Office","description":"PDF, Word, Excel, PowerPoint, Markdown and structured document workflows."},
+    {"id":"data-science","name":"Data Science","description":"Data cleaning, analysis, visualization, statistics, ETL and data pipelines."},
+    {"id":"security-analysis","name":"Security & Software Analysis","description":"Defensive security, secure coding, dependency review and authorized software analysis."},
+    {"id":"testing-qa","name":"Testing & Quality Assurance","description":"Unit, integration, end-to-end, performance, accessibility and regression testing."},
+    {"id":"education","name":"Education","description":"Learning support, explanations, curriculum-aware content and study workflows."},
+    {"id":"business","name":"Business & Operations","description":"Product planning, business workflows, project management, marketing and operations."}
+  ]
+}
