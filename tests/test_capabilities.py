@@ -3,7 +3,7 @@ from __future__ import annotations
 import unittest
 from pathlib import Path
 
-from universal_skills.capabilities import load_capabilities, route_task, validate_capabilities
+from universal_skills.capabilities import load_capabilities, load_capability_workflow, route_task, validate_capabilities
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -15,13 +15,25 @@ class CapabilityRegistryTests(unittest.TestCase):
     def test_catalogue_covers_all_22_domains(self) -> None:
         document = load_capabilities(ROOT)
         records = document["capabilities"]
-        self.assertEqual(len(records), 88)
+        self.assertEqual(len(records), 176)
         self.assertEqual(len({item["domain"] for item in records}), 22)
 
     def test_every_domain_has_four_capabilities(self) -> None:
         records = load_capabilities(ROOT)["capabilities"]
         for domain in {item["domain"] for item in records}:
-            self.assertEqual(sum(item["domain"] == domain for item in records), 4)
+            self.assertEqual(sum(item["domain"] == domain for item in records), 8)
+
+    def test_every_capability_has_a_unique_workflow_reference(self) -> None:
+        document = load_capabilities(ROOT)
+        refs = [item["workflow_ref"] for item in document["capabilities"]]
+        self.assertEqual(len(refs), len(set(refs)))
+        self.assertTrue(all(ref.startswith("skills/universal-agent/references/capability-workflows.md#") for ref in refs))
+
+    def test_selected_capability_workflow_is_loaded_without_other_sections(self) -> None:
+        content = load_capability_workflow("cloud-serverless-apps", root=ROOT)
+        self.assertTrue(content.startswith("## cloud-serverless-apps — Serverless application architecture"))
+        self.assertIn("Completion evidence", content)
+        self.assertNotIn("## youtube-analytics", content)
 
     def test_cloudflare_worker_task_routes_to_cloud_capability(self) -> None:
         results = route_task("build a Cloudflare Workers serverless API", root=ROOT, limit=5)
