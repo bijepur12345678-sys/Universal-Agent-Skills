@@ -408,7 +408,7 @@ export default {
         const limit = Number(url.searchParams.get("limit") ?? "8");
         return json(await discoverSources(query, limit));
       }
-      const workflowMatch = url.pathname.match(/^\\/v1\\/workflows\\/([a-z0-9-]+)$/);
+      const workflowMatch = url.pathname.match(/^\/v1\/workflows\/([a-z0-9-]+)$/);
       if (workflowMatch) {
         const result = await getCapabilityWorkflow(env, workflowMatch[1]);
         return result ? json(result) : errorResponse("Capability workflow not found.", 404);
