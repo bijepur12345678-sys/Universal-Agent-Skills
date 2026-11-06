@@ -18,7 +18,7 @@ class CapabilityRegistryTests(unittest.TestCase):
         self.assertEqual(len(records), 176)
         self.assertEqual(len({item["domain"] for item in records}), 22)
 
-    def test_every_domain_has_four_capabilities(self) -> None:
+    def test_every_domain_has_eight_capabilities(self) -> None:
         records = load_capabilities(ROOT)["capabilities"]
         for domain in {item["domain"] for item in records}:
             self.assertEqual(sum(item["domain"] == domain for item in records), 8)
