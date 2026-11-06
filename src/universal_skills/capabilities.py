@@ -76,7 +76,7 @@ def validate_capabilities(root: Path | str | None = None) -> list[str]:
 
         for field in (
             "id", "domain", "module_id", "name", "description", "triggers",
-            "synonyms", "required_tools", "risk_level", "approval_required", "status",
+            "synonyms", "required_tools", "risk_level", "approval_required", "status", "workflow_ref",
         ):
             if field not in item:
                 errors.append(f"{prefix} missing {field!r}")
@@ -133,7 +133,75 @@ def validate_capabilities(root: Path | str | None = None) -> list[str]:
         elif item.get("risk_level") == "elevated" and item.get("approval_required") is not True:
             errors.append(f"{prefix} elevated-risk capability must require approval")
 
+    workflow_path = base / "skills" / "universal-agent" / "references" / "capability-workflows.md"
+    if not workflow_path.is_file():
+        errors.append("missing capability workflow pack: skills/universal-agent/references/capability-workflows.md")
+    else:
+        try:
+            workflow_text = workflow_path.read_text(encoding="utf-8")
+            for index, item in enumerate(records):
+                if not isinstance(item, dict) or not isinstance(item.get("id"), str):
+                    continue
+                capability_id = item["id"]
+                expected_ref = "skills/universal-agent/references/capability-workflows.md#" + capability_id
+                if item.get("workflow_ref") != expected_ref:
+                    errors.append(
+                        f"capabilities.json: capabilities[{index}] has an invalid workflow_ref"
+                    )
+                    continue
+                heading = re.compile(r"(?m)^## " + re.escape(capability_id) + r" — .+$")
+                if not heading.search(workflow_text):
+                    errors.append(
+                        f"capabilities.json: capabilities[{index}] workflow section is missing"
+                    )
+        except OSError as exc:
+            errors.append(f"unable to read capability workflow pack: {exc}")
+
     return errors
+
+
+def load_capability_workflow(
+    capability_id: str,
+    root: Path | str | None = None,
+    include_legacy: bool = False,
+) -> str:
+    """Load one capability's section without loading unrelated workflow instructions."""
+    if not isinstance(capability_id, str) or not _ID_RE.fullmatch(capability_id):
+        raise ValueError("capability_id must be a lowercase stable ID")
+
+    document = load_capabilities(root)
+    matches = [
+        item for item in document.get("capabilities", [])
+        if isinstance(item, dict) and item.get("id") == capability_id
+    ]
+    if not matches:
+        raise RegistryError(f"Unknown capability ID: {capability_id}")
+
+    record = matches[0]
+    status = record.get("status")
+    if status in {"deprecated", "archived"} or (status == "legacy" and not include_legacy):
+        raise RegistryError(
+            f"Capability {capability_id!r} is not loadable by default (status={status!r})"
+        )
+
+    expected_ref = "skills/universal-agent/references/capability-workflows.md#" + capability_id
+    if record.get("workflow_ref") != expected_ref:
+        raise RegistryError(f"Capability {capability_id!r} has an invalid workflow reference")
+
+    workflow_path = (
+        _root(root) / "skills" / "universal-agent" / "references" / "capability-workflows.md"
+    )
+    try:
+        content = workflow_path.read_text(encoding="utf-8")
+    except FileNotFoundError as exc:
+        raise RegistryError("Capability workflow pack is missing") from exc
+
+    match = re.search(r"(?m)^## " + re.escape(capability_id) + r" — .+$", content)
+    if not match:
+        raise RegistryError(f"Capability workflow section not found: {capability_id}")
+    next_heading = re.search(r"(?m)^## ", content[match.end():])
+    end = match.end() + next_heading.start() if next_heading else len(content)
+    return content[match.start():end].strip()
 
 
 def _tokens(value: str) -> set[str]:
