@@ -22,6 +22,12 @@ Input: query, optional domain, limit, available_tools, include_legacy.
 
 Output: ranked capability records including the internal module ID, matched terms, required/missing tools, risk level, and approval flag.
 
+### get_capability_workflow
+
+Input: capability_id.
+
+Output: one section from the internal capability workflow pack. Unknown, deprecated, and archived capability IDs are not returned by default.
+
 ### list_domains
 
 Input: none.
