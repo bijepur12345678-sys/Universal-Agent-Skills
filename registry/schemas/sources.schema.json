@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Universal Agent Skills Upstream Source Registry",
+  "type": "object",
+  "required": ["schema_version", "sources"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "url", "type", "license", "license_scope", "review_status", "integration_mode", "use_for", "notes"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+          "repository": {"type": ["string", "null"]},
+          "url": {"type": "string", "format": "uri"},
+          "type": {"enum": ["github_repository", "official_documentation"]},
+          "license": {"type": "string"},
+          "license_scope": {"type": "string"},
+          "review_status": {"enum": ["reviewed_reference", "reference_only", "review_required", "approved_for_import", "rejected"]},
+          "integration_mode": {"type": "string"},
+          "use_for": {"type": "array", "items": {"type": "string"}},
+          "notes": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
