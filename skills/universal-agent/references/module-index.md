@@ -4,9 +4,13 @@ This file belongs to the `universal-agent` Skill package. Select only the module
 
 ## Granular capability catalogue
 
-The repository-level `registry/capabilities.json` contains 88 experimental task-capability records across all 22 domains (four per domain). These are routing records, not 88 separate public Skills. Each record maps to one of the internal modules below using `module_id`.
+The repository-level `registry/capabilities.json` contains 176 experimental task-capability records across all 22 domains (eight per domain). The workflow instructions live as individually retrievable sections in `capability-workflows.md`; these are internal workflows, not separate top-level Agent Skills. Each capability maps to one parent module below using `module_id`.
 
-Use `universal-skills route --task "..." ` when the Python toolkit is available, or the read-only cloud API/MCP endpoint after it is deployed. Check returned `required_tools`, `missing_tools`, `risk_level`, and `approval_required` before execution.
+Route with `universal-skills route --task "..."`, then load only the selected section using `universal-skills show-capability --id <capability-id>`. After deployment, compatible clients can use `GET /v1/workflows/:id` or MCP `get_capability_workflow`. Check `required_tools`, `missing_tools`, `risk_level`, and `approval_required` before execution.
+
+## Capability workflow pack
+
+`capability-workflows.md` contains 176 focused first-party workflow sections. Retrieve by stable capability ID; never load the whole pack into model context.
 
 ## Internal modules
 
