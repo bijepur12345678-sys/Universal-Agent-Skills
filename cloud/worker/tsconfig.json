@@ -11,7 +11,9 @@
       "DOM",
       "DOM.Iterable"
     ],
-    "types": [],
+    "types": [
+      "node"
+    ],
     "forceConsistentCasingInFileNames": true
   },
   "include": [
