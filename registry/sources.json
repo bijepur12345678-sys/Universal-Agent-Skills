@@ -1,22 +1,486 @@
 {
   "schema_version": 1,
   "sources": [
-    {"id":"skillcorpus","repository":"EverMind-AI/SkillCorpus","url":"https://github.com/EverMind-AI/SkillCorpus","type":"github_repository","license":"Apache-2.0 core; selected subpackages MIT; each skill keeps its upstream license","license_scope":"path_and_skill_specific","review_status":"reviewed_reference","integration_mode":"architecture_reference","use_for":["ingestion pipeline","quality evaluation","deduplication","license audit","retrieval"],"notes":"Do not treat the aggregate license as the license for every corpus row."},
-    {"id":"skillnet","repository":"zjunlp/SkillNet","url":"https://github.com/zjunlp/SkillNet","type":"github_repository","license":"MIT","license_scope":"repository_license_verified","review_status":"reviewed_reference","integration_mode":"architecture_reference","use_for":["semantic discovery","skill graphs","task routing","evaluation"],"notes":"Review dependencies, hosted services, and code paths before adoption."},
-    {"id":"skills-tree","repository":"SamoTech/skills-tree","url":"https://github.com/SamoTech/skills-tree","type":"github_repository","license":"MIT","license_scope":"repository_license_verified","review_status":"reviewed_reference","integration_mode":"catalogue_reference","use_for":["capability taxonomy","machine-readable registry","dependency graph"],"notes":"Upstream documents current CLI and generated registry; do not assume historical Python API exists."},
-    {"id":"agentic-awesome-skills","repository":"sickn33/agentic-awesome-skills","url":"https://github.com/sickn33/agentic-awesome-skills","type":"github_repository","license":"MIT repository license; item-level provenance still required","license_scope":"repository_and_contribution_specific","review_status":"reviewed_reference","integration_mode":"candidate_catalogue","use_for":["domain skill discovery","coding","research","design","automation"],"notes":"Review provenance and embedded third-party material for every individual Skill."},
-    {"id":"anthropic-skills","repository":"anthropics/skills","url":"https://github.com/anthropics/skills","type":"github_repository","license":"Mixed; examples include Apache-2.0; document skills are source-available, not open source","license_scope":"path_specific","review_status":"reference_only","integration_mode":"authoring_reference","use_for":["skill authoring patterns","document workflows","frontend and MCP examples"],"notes":"Do not redistribute source-available document skills."},
-    {"id":"cloudflare-skills","repository":"cloudflare/skills","url":"https://github.com/cloudflare/skills","type":"github_repository","license":"Apache-2.0","license_scope":"repository_license_verified","review_status":"reviewed_reference","integration_mode":"candidate_skill_source","use_for":["Workers","Agents SDK","Durable Objects","Workflows","cloud sandboxes"],"notes":"Verify exact file and revision before importing."},
-    {"id":"vercel-agent-skills","repository":"vercel-labs/agent-skills","url":"https://github.com/vercel-labs/agent-skills","type":"github_repository","license":"MIT stated by upstream README; exact file scope review required","license_scope":"readme_claim","review_status":"reviewed_reference","integration_mode":"candidate_skill_source","use_for":["React","Next.js","frontend best practices","design"],"notes":"Verify exact license and third-party asset scope before redistribution."},
-    {"id":"supabase-agent-skills","repository":"supabase/agent-skills","url":"https://github.com/supabase/agent-skills","type":"github_repository","license":"MIT","license_scope":"repository_license_verified","review_status":"reviewed_reference","integration_mode":"candidate_skill_source","use_for":["Supabase","PostgreSQL","RLS","database development"],"notes":"Preserve provenance and check release artifacts."},
-    {"id":"awesome-copilot","repository":"github/awesome-copilot","url":"https://github.com/github/awesome-copilot","type":"github_repository","license":"MIT repository license; third-party submissions need item-level review","license_scope":"repository_and_contribution_specific","review_status":"reviewed_reference","integration_mode":"candidate_catalogue","use_for":["agents","instructions","skills","hooks","workflows","plugins"],"notes":"Upstream says customizations are sourced from third-party developers."},
-    {"id":"superpowers","repository":"obra/superpowers","url":"https://github.com/obra/superpowers","type":"github_repository","license":"MIT","license_scope":"repository_license_verified","review_status":"reviewed_reference","integration_mode":"candidate_skill_source","use_for":["brainstorming","planning","TDD","debugging","code review"],"notes":"Review exact workflows before adopting."},
-    {"id":"playwright-cli","repository":"microsoft/playwright-cli","url":"https://github.com/microsoft/playwright-cli","type":"github_repository","license":"Apache-2.0","license_scope":"repository_license_verified","review_status":"reviewed_reference","integration_mode":"tool_reference","use_for":["browser automation","browser testing","coding-agent workflows"],"notes":"Run browser dependencies only in isolated cloud runtime."},
-    {"id":"playwright-mcp","repository":"microsoft/playwright-mcp","url":"https://github.com/microsoft/playwright-mcp","type":"github_repository","license":"Apache-2.0","license_scope":"repository_license_verified","review_status":"reviewed_reference","integration_mode":"tool_reference","use_for":["MCP browser automation","accessibility snapshots","browser inspection"],"notes":"Upstream documents CLI versus MCP context-efficiency trade-offs."},
-    {"id":"mcp-registry","repository":"modelcontextprotocol/registry","url":"https://github.com/modelcontextprotocol/registry","type":"github_repository","license":"New contributions/specifications Apache-2.0; some older contributions remain MIT","license_scope":"contribution_specific","review_status":"reference_only","integration_mode":"protocol_reference","use_for":["MCP discovery","publishing workflow","server metadata"],"notes":"Respect upstream licensing transition and official publisher workflow."},
-    {"id":"mcp-inspector","repository":"modelcontextprotocol/inspector","url":"https://github.com/modelcontextprotocol/inspector","type":"github_repository","license":"MIT","license_scope":"repository_license_verified","review_status":"reviewed_reference","integration_mode":"tool_reference","use_for":["MCP server testing","debugging","tool inspection"],"notes":"Use in isolated testing environments."},
-    {"id":"langgraph","repository":"langchain-ai/langgraph","url":"https://github.com/langchain-ai/langgraph","type":"github_repository","license":"MIT","license_scope":"repository_license_verified","review_status":"reviewed_reference","integration_mode":"architecture_reference","use_for":["stateful workflows","durable execution","human-in-the-loop","orchestration"],"notes":"Add a framework dependency only when justified by a concrete use case."},
-    {"id":"flaui-mcp","repository":"shanselman/FlaUI-MCP","url":"https://github.com/shanselman/FlaUI-MCP","type":"github_repository","license":"MIT","license_scope":"repository_license_verified","review_status":"reviewed_reference","integration_mode":"tool_reference","use_for":["Windows UI Automation","semantic accessibility tree","desktop inspection"],"notes":"Prefer read-only observation; gate click/type actions separately."},
-    {"id":"youtube-data-api","repository":null,"url":"https://developers.google.com/youtube/v3","type":"official_documentation","license":"Documentation reference; no redistribution assumed","license_scope":"reference_only","review_status":"reviewed_reference","integration_mode":"api_reference","use_for":["YouTube metadata","authorized API research","quota-aware integrations"],"notes":"Use official scopes and API access; do not bypass access controls."}
+    {
+      "id": "skillcorpus",
+      "repository": "EverMind-AI/SkillCorpus",
+      "url": "https://github.com/EverMind-AI/SkillCorpus",
+      "type": "github_repository",
+      "license": "Apache-2.0 core; selected subpackages MIT; each skill keeps its upstream license",
+      "license_scope": "path_and_skill_specific",
+      "review_status": "reviewed_reference",
+      "integration_mode": "architecture_reference",
+      "use_for": [
+        "ingestion pipeline",
+        "quality evaluation",
+        "deduplication",
+        "license audit",
+        "retrieval"
+      ],
+      "notes": "Do not treat the aggregate license as the license for every corpus row."
+    },
+    {
+      "id": "skillnet",
+      "repository": "zjunlp/SkillNet",
+      "url": "https://github.com/zjunlp/SkillNet",
+      "type": "github_repository",
+      "license": "MIT",
+      "license_scope": "repository_license_verified",
+      "review_status": "reviewed_reference",
+      "integration_mode": "architecture_reference",
+      "use_for": [
+        "semantic discovery",
+        "skill graphs",
+        "task routing",
+        "evaluation"
+      ],
+      "notes": "Review dependencies, hosted services, and code paths before adoption."
+    },
+    {
+      "id": "skills-tree",
+      "repository": "SamoTech/skills-tree",
+      "url": "https://github.com/SamoTech/skills-tree",
+      "type": "github_repository",
+      "license": "MIT",
+      "license_scope": "repository_license_verified",
+      "review_status": "reviewed_reference",
+      "integration_mode": "catalogue_reference",
+      "use_for": [
+        "capability taxonomy",
+        "machine-readable registry",
+        "dependency graph"
+      ],
+      "notes": "Upstream documents current CLI and generated registry; do not assume historical Python API exists."
+    },
+    {
+      "id": "agentic-awesome-skills",
+      "repository": "sickn33/agentic-awesome-skills",
+      "url": "https://github.com/sickn33/agentic-awesome-skills",
+      "type": "github_repository",
+      "license": "MIT repository license; item-level provenance still required",
+      "license_scope": "repository_and_contribution_specific",
+      "review_status": "reviewed_reference",
+      "integration_mode": "candidate_catalogue",
+      "use_for": [
+        "domain skill discovery",
+        "coding",
+        "research",
+        "design",
+        "automation"
+      ],
+      "notes": "Review provenance and embedded third-party material for every individual Skill."
+    },
+    {
+      "id": "anthropic-skills",
+      "repository": "anthropics/skills",
+      "url": "https://github.com/anthropics/skills",
+      "type": "github_repository",
+      "license": "Mixed; examples include Apache-2.0; document skills are source-available, not open source",
+      "license_scope": "path_specific",
+      "review_status": "reference_only",
+      "integration_mode": "authoring_reference",
+      "use_for": [
+        "skill authoring patterns",
+        "document workflows",
+        "frontend and MCP examples"
+      ],
+      "notes": "Do not redistribute source-available document skills."
+    },
+    {
+      "id": "cloudflare-skills",
+      "repository": "cloudflare/skills",
+      "url": "https://github.com/cloudflare/skills",
+      "type": "github_repository",
+      "license": "Apache-2.0",
+      "license_scope": "repository_license_verified",
+      "review_status": "reviewed_reference",
+      "integration_mode": "candidate_skill_source",
+      "use_for": [
+        "Workers",
+        "Agents SDK",
+        "Durable Objects",
+        "Workflows",
+        "cloud sandboxes"
+      ],
+      "notes": "Verify exact file and revision before importing."
+    },
+    {
+      "id": "vercel-agent-skills",
+      "repository": "vercel-labs/agent-skills",
+      "url": "https://github.com/vercel-labs/agent-skills",
+      "type": "github_repository",
+      "license": "MIT stated by upstream README; exact file scope review required",
+      "license_scope": "readme_claim",
+      "review_status": "reviewed_reference",
+      "integration_mode": "candidate_skill_source",
+      "use_for": [
+        "React",
+        "Next.js",
+        "frontend best practices",
+        "design"
+      ],
+      "notes": "Verify exact license and third-party asset scope before redistribution."
+    },
+    {
+      "id": "supabase-agent-skills",
+      "repository": "supabase/agent-skills",
+      "url": "https://github.com/supabase/agent-skills",
+      "type": "github_repository",
+      "license": "MIT",
+      "license_scope": "repository_license_verified",
+      "review_status": "reviewed_reference",
+      "integration_mode": "candidate_skill_source",
+      "use_for": [
+        "Supabase",
+        "PostgreSQL",
+        "RLS",
+        "database development"
+      ],
+      "notes": "Preserve provenance and check release artifacts."
+    },
+    {
+      "id": "awesome-copilot",
+      "repository": "github/awesome-copilot",
+      "url": "https://github.com/github/awesome-copilot",
+      "type": "github_repository",
+      "license": "MIT repository license; third-party submissions need item-level review",
+      "license_scope": "repository_and_contribution_specific",
+      "review_status": "reviewed_reference",
+      "integration_mode": "candidate_catalogue",
+      "use_for": [
+        "agents",
+        "instructions",
+        "skills",
+        "hooks",
+        "workflows",
+        "plugins"
+      ],
+      "notes": "Upstream says customizations are sourced from third-party developers."
+    },
+    {
+      "id": "superpowers",
+      "repository": "obra/superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "type": "github_repository",
+      "license": "MIT",
+      "license_scope": "repository_license_verified",
+      "review_status": "reviewed_reference",
+      "integration_mode": "candidate_skill_source",
+      "use_for": [
+        "brainstorming",
+        "planning",
+        "TDD",
+        "debugging",
+        "code review"
+      ],
+      "notes": "Review exact workflows before adopting."
+    },
+    {
+      "id": "playwright-cli",
+      "repository": "microsoft/playwright-cli",
+      "url": "https://github.com/microsoft/playwright-cli",
+      "type": "github_repository",
+      "license": "Apache-2.0",
+      "license_scope": "repository_license_verified",
+      "review_status": "reviewed_reference",
+      "integration_mode": "tool_reference",
+      "use_for": [
+        "browser automation",
+        "browser testing",
+        "coding-agent workflows"
+      ],
+      "notes": "Run browser dependencies only in isolated cloud runtime."
+    },
+    {
+      "id": "playwright-mcp",
+      "repository": "microsoft/playwright-mcp",
+      "url": "https://github.com/microsoft/playwright-mcp",
+      "type": "github_repository",
+      "license": "Apache-2.0",
+      "license_scope": "repository_license_verified",
+      "review_status": "reviewed_reference",
+      "integration_mode": "tool_reference",
+      "use_for": [
+        "MCP browser automation",
+        "accessibility snapshots",
+        "browser inspection"
+      ],
+      "notes": "Upstream documents CLI versus MCP context-efficiency trade-offs."
+    },
+    {
+      "id": "mcp-registry",
+      "repository": "modelcontextprotocol/registry",
+      "url": "https://github.com/modelcontextprotocol/registry",
+      "type": "github_repository",
+      "license": "New contributions/specifications Apache-2.0; some older contributions remain MIT",
+      "license_scope": "contribution_specific",
+      "review_status": "reference_only",
+      "integration_mode": "protocol_reference",
+      "use_for": [
+        "MCP discovery",
+        "publishing workflow",
+        "server metadata"
+      ],
+      "notes": "Respect upstream licensing transition and official publisher workflow."
+    },
+    {
+      "id": "mcp-inspector",
+      "repository": "modelcontextprotocol/inspector",
+      "url": "https://github.com/modelcontextprotocol/inspector",
+      "type": "github_repository",
+      "license": "MIT",
+      "license_scope": "repository_license_verified",
+      "review_status": "reviewed_reference",
+      "integration_mode": "tool_reference",
+      "use_for": [
+        "MCP server testing",
+        "debugging",
+        "tool inspection"
+      ],
+      "notes": "Use in isolated testing environments."
+    },
+    {
+      "id": "langgraph",
+      "repository": "langchain-ai/langgraph",
+      "url": "https://github.com/langchain-ai/langgraph",
+      "type": "github_repository",
+      "license": "MIT",
+      "license_scope": "repository_license_verified",
+      "review_status": "reviewed_reference",
+      "integration_mode": "architecture_reference",
+      "use_for": [
+        "stateful workflows",
+        "durable execution",
+        "human-in-the-loop",
+        "orchestration"
+      ],
+      "notes": "Add a framework dependency only when justified by a concrete use case."
+    },
+    {
+      "id": "flaui-mcp",
+      "repository": "shanselman/FlaUI-MCP",
+      "url": "https://github.com/shanselman/FlaUI-MCP",
+      "type": "github_repository",
+      "license": "MIT",
+      "license_scope": "repository_license_verified",
+      "review_status": "reviewed_reference",
+      "integration_mode": "tool_reference",
+      "use_for": [
+        "Windows UI Automation",
+        "semantic accessibility tree",
+        "desktop inspection"
+      ],
+      "notes": "Prefer read-only observation; gate click/type actions separately."
+    },
+    {
+      "id": "youtube-data-api",
+      "repository": null,
+      "url": "https://developers.google.com/youtube/v3",
+      "type": "official_documentation",
+      "license": "Documentation reference; no redistribution assumed",
+      "license_scope": "reference_only",
+      "review_status": "reviewed_reference",
+      "integration_mode": "api_reference",
+      "use_for": [
+        "YouTube metadata",
+        "authorized API research",
+        "quota-aware integrations"
+      ],
+      "notes": "Use official scopes and API access; do not bypass access controls."
+    },
+    {
+      "id": "microsoft-skills",
+      "repository": "microsoft/skills",
+      "url": "https://github.com/microsoft/skills",
+      "type": "github_repository",
+      "license": "MIT repository license; inspect exact file and any third-party contribution/asset terms",
+      "license_scope": "repository_license_verified_item_review_required",
+      "review_status": "reviewed_reference",
+      "integration_mode": "candidate_catalogue",
+      "use_for": [
+        "Azure SDK skills",
+        "Microsoft Foundry workflows",
+        "175-skill catalogue reference",
+        "custom agents",
+        "AGENTS.md templates",
+        "MCP configurations",
+        "skill evaluation patterns"
+      ],
+      "notes": "Official Microsoft repository. README currently labels the project work in progress and reports 175 skills across core, Foundry, Python, .NET, TypeScript, Java, and Rust. It explicitly advises selective loading; do not import the entire set without per-skill review."
+    },
+    {
+      "id": "microsoftdocs-agent-skills",
+      "repository": "MicrosoftDocs/agent-skills",
+      "url": "https://github.com/MicrosoftDocs/agent-skills",
+      "type": "github_repository",
+      "license": "Dual license: documentation/skill content CC BY 4.0; code MIT",
+      "license_scope": "path_specific_dual_license",
+      "review_status": "reference_only",
+      "integration_mode": "candidate_catalogue",
+      "use_for": [
+        "Azure service skill discovery",
+        "Microsoft Learn grounded workflows",
+        "Azure taxonomy",
+        "compatibility patterns",
+        "generated skill catalogue"
+      ],
+      "notes": "Official MicrosoftDocs Azure Agent Skills. Current README/docs describe 193+ Azure service skills generated from Microsoft Learn and compatible with multiple Agent Skills hosts. Content may be reused only with CC BY 4.0 attribution and other terms satisfied; keep reference-only until each exact path and notice is checked."
+    },
+    {
+      "id": "microsoft-azure-skills",
+      "repository": "microsoft/azure-skills",
+      "url": "https://github.com/microsoft/azure-skills",
+      "type": "github_repository",
+      "license": "MIT",
+      "license_scope": "repository_license_verified",
+      "review_status": "reviewed_reference",
+      "integration_mode": "candidate_skill_and_tool_reference",
+      "use_for": [
+        "Azure prepare/validate/deploy/upgrade",
+        "Azure diagnostics",
+        "cost and quota workflows",
+        "RBAC and identity",
+        "Azure MCP Server",
+        "Foundry MCP"
+      ],
+      "notes": "Official Microsoft Azure plugin. README describes curated Azure Skills plus Azure and Foundry MCP connectivity, and multi-host support. Actual Azure actions require an Azure subscription, user-authenticated CLI or MCP authorization, and may incur cloud costs; this source record does not authorize provisioning."
+    },
+    {
+      "id": "microsoft-agent-framework",
+      "repository": "microsoft/agent-framework",
+      "url": "https://github.com/microsoft/agent-framework",
+      "type": "github_repository",
+      "license": "MIT",
+      "license_scope": "repository_license_verified",
+      "review_status": "reviewed_reference",
+      "integration_mode": "agent_orchestration_reference",
+      "use_for": [
+        "Python and .NET agent framework",
+        "multi-agent orchestration",
+        "MCP and A2A interoperability",
+        "cloud and local agent hosting",
+        "agent workflow samples"
+      ],
+      "notes": "Microsoft Agent Framework README describes a production-grade multi-language framework. Prefer this for new Microsoft-aligned orchestration evaluation; verify exact release, API stability, and prerequisites before adding runtime dependencies."
+    },
+    {
+      "id": "microsoft-semantic-kernel",
+      "repository": "microsoft/semantic-kernel",
+      "url": "https://github.com/microsoft/semantic-kernel",
+      "type": "github_repository",
+      "license": "MIT",
+      "license_scope": "repository_license_verified",
+      "review_status": "reviewed_reference",
+      "integration_mode": "legacy_compatibility_reference",
+      "use_for": [
+        "existing Semantic Kernel projects",
+        "migration assessment",
+        "historical plugin and agent patterns"
+      ],
+      "notes": "Keep as a legacy compatibility/reference source. The current README points to Microsoft Agent Framework as the enterprise-ready successor and provides a Semantic Kernel migration guide. Do not select Semantic Kernel by default for new implementations without a compatibility reason."
+    },
+    {
+      "id": "microsoft-mcp",
+      "repository": "microsoft/mcp",
+      "url": "https://github.com/microsoft/mcp",
+      "type": "github_repository",
+      "license": "MIT",
+      "license_scope": "repository_license_verified",
+      "review_status": "reviewed_reference",
+      "integration_mode": "mcp_server_reference",
+      "use_for": [
+        "Microsoft MCP server engineering",
+        "MCP libraries and test harnesses",
+        "server implementation patterns",
+        "tooling and contribution guidelines"
+      ],
+      "notes": "Official Microsoft MCP server engineering repository. It contains shared libraries, test frameworks, pipelines, and tooling for multiple Microsoft MCP servers; repository is large, so evaluate specific server packages rather than copying the whole repository."
+    },
+    {
+      "id": "microsoft-waza",
+      "repository": "microsoft/waza",
+      "url": "https://github.com/microsoft/waza",
+      "type": "github_repository",
+      "license": "MIT",
+      "license_scope": "repository_license_verified",
+      "review_status": "reviewed_reference",
+      "integration_mode": "skill_evaluation_tool_reference",
+      "use_for": [
+        "evaluating agent workflows",
+        "skill evaluation",
+        "custom agent tests",
+        "MCP scenario testing",
+        "graded trials and evidence inspection"
+      ],
+      "notes": "Microsoft Go CLI for evaluating agent workflows, Skills, custom agents, and MCP scenarios. The README documents a version boundary between published CLI binaries and newer source behavior; always verify release/tag versus current main before relying on a feature."
+    },
+    {
+      "id": "microsoft-win-dev-skills",
+      "repository": "microsoft/win-dev-skills",
+      "url": "https://github.com/microsoft/win-dev-skills",
+      "type": "github_repository",
+      "license": "MIT",
+      "license_scope": "repository_license_verified",
+      "review_status": "reviewed_reference",
+      "integration_mode": "candidate_skill_source",
+      "use_for": [
+        "Windows app development",
+        "WinUI 3",
+        "WinApp CLI packaging",
+        "Windows debugging",
+        "Windows developer workflows"
+      ],
+      "notes": "Official Microsoft agent plugins and Skills for Windows development/debugging. README notes host support varies; on some Codex/OpenCode setups Skills load while agents do not. Review local-machine prerequisites and never auto-install them."
+    },
+    {
+      "id": "microsoft-power-platform-skills",
+      "repository": "microsoft/power-platform-skills",
+      "url": "https://github.com/microsoft/power-platform-skills",
+      "type": "github_repository",
+      "license": "MIT repository license; review plugin-specific dependencies and included third-party material",
+      "license_scope": "repository_and_plugin_specific",
+      "review_status": "reviewed_reference",
+      "integration_mode": "candidate_catalogue",
+      "use_for": [
+        "Power Platform",
+        "Power Apps",
+        "Power Pages",
+        "Dataverse",
+        "Power BI and MCP Apps"
+      ],
+      "notes": "Official Microsoft Power Platform plugins/Skills. Installation instructions may invoke local CLIs or SDKs; extract only task guidance and keep runtime dependencies optional."
+    },
+    {
+      "id": "microsoft-cat-agent-skills",
+      "repository": "microsoft/cat-agent-skills",
+      "url": "https://github.com/microsoft/cat-agent-skills",
+      "type": "github_repository",
+      "license": "MIT repository license; individual submitted skill source and license notices must be retained",
+      "license_scope": "repository_and_contribution_specific",
+      "review_status": "reviewed_reference",
+      "integration_mode": "candidate_gallery_reference",
+      "use_for": [
+        "agent skill discovery",
+        "skill metadata and searchable gallery patterns",
+        "community-contributed examples"
+      ],
+      "notes": "Microsoft community gallery includes Skills, plugins, and automations. README describes original source and license notices being retained; inspect each item before reuse."
+    },
+    {
+      "id": "microsoft-azure-devops-mcp",
+      "repository": "microsoft/azure-devops-mcp",
+      "url": "https://github.com/microsoft/azure-devops-mcp",
+      "type": "github_repository",
+      "license": "Unknown pending exact license verification",
+      "license_scope": "unverified",
+      "review_status": "review_required",
+      "integration_mode": "mcp_tool_candidate",
+      "use_for": [
+        "Azure DevOps work items",
+        "pipelines",
+        "repositories and project tooling"
+      ],
+      "notes": "Public Microsoft repository discovered; do not import code or recommend runtime use until the exact license, release state, and current README requirements are verified."
+    }
   ]
 }
