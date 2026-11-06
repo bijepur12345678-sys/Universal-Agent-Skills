@@ -125,7 +125,9 @@
         "model evaluation"
       ],
       "source_ids": [
-        "skillcorpus"
+        "skillcorpus",
+        "microsoft-skills",
+        "microsoftdocs-agent-skills"
       ],
       "license": "Apache-2.0",
       "entrypoint": false
@@ -149,7 +151,10 @@
       "source_ids": [
         "skillnet",
         "langgraph",
-        "awesome-copilot"
+        "awesome-copilot",
+        "microsoft-agent-framework",
+        "microsoft-waza",
+        "microsoft-skills"
       ],
       "license": "Apache-2.0",
       "entrypoint": false
@@ -171,7 +176,9 @@
       ],
       "source_ids": [
         "superpowers",
-        "awesome-copilot"
+        "awesome-copilot",
+        "microsoft-skills",
+        "microsoft-win-dev-skills"
       ],
       "license": "Apache-2.0",
       "entrypoint": false
@@ -193,7 +200,9 @@
         "web UI"
       ],
       "source_ids": [
-        "vercel-agent-skills"
+        "vercel-agent-skills",
+        "microsoft-skills",
+        "microsoft-win-dev-skills"
       ],
       "license": "Apache-2.0",
       "entrypoint": false
@@ -215,7 +224,9 @@
       ],
       "source_ids": [
         "cloudflare-skills",
-        "supabase-agent-skills"
+        "supabase-agent-skills",
+        "microsoft-skills",
+        "microsoft-agent-framework"
       ],
       "license": "Apache-2.0",
       "entrypoint": false
@@ -236,7 +247,10 @@
         "networking"
       ],
       "source_ids": [
-        "cloudflare-skills"
+        "cloudflare-skills",
+        "microsoft-azure-skills",
+        "microsoftdocs-agent-skills",
+        "microsoft-skills"
       ],
       "license": "Apache-2.0",
       "entrypoint": false
@@ -258,7 +272,10 @@
       ],
       "source_ids": [
         "cloudflare-skills",
-        "awesome-copilot"
+        "awesome-copilot",
+        "microsoft-azure-skills",
+        "microsoft-azure-devops-mcp",
+        "microsoft-waza"
       ],
       "license": "Apache-2.0",
       "entrypoint": false
@@ -279,7 +296,9 @@
         "indexes"
       ],
       "source_ids": [
-        "supabase-agent-skills"
+        "supabase-agent-skills",
+        "microsoft-skills",
+        "microsoftdocs-agent-skills"
       ],
       "license": "Apache-2.0",
       "entrypoint": false
@@ -301,7 +320,10 @@
       ],
       "source_ids": [
         "skillcorpus",
-        "awesome-copilot"
+        "awesome-copilot",
+        "microsoft-skills",
+        "microsoftdocs-agent-skills",
+        "microsoft-cat-agent-skills"
       ],
       "license": "Apache-2.0",
       "entrypoint": false
@@ -323,7 +345,9 @@
         "accessibility"
       ],
       "source_ids": [
-        "vercel-agent-skills"
+        "vercel-agent-skills",
+        "microsoft-power-platform-skills",
+        "microsoft-win-dev-skills"
       ],
       "license": "Apache-2.0",
       "entrypoint": false
@@ -365,7 +389,8 @@
         "accessibility tree"
       ],
       "source_ids": [
-        "flaui-mcp"
+        "flaui-mcp",
+        "microsoft-win-dev-skills"
       ],
       "license": "Apache-2.0",
       "entrypoint": false
@@ -385,7 +410,9 @@
         "React Native",
         "mobile apps"
       ],
-      "source_ids": [],
+      "source_ids": [
+        "microsoft-skills"
+      ],
       "license": "Apache-2.0",
       "entrypoint": false
     },
@@ -406,7 +433,8 @@
         "editing"
       ],
       "source_ids": [
-        "agentic-awesome-skills"
+        "agentic-awesome-skills",
+        "microsoft-skills"
       ],
       "license": "Apache-2.0",
       "entrypoint": false
@@ -451,7 +479,10 @@
       "source_ids": [
         "mcp-registry",
         "mcp-inspector",
-        "langgraph"
+        "langgraph",
+        "microsoft-mcp",
+        "microsoft-azure-skills",
+        "microsoft-agent-framework"
       ],
       "license": "Apache-2.0",
       "entrypoint": false
@@ -473,7 +504,9 @@
         "reports"
       ],
       "source_ids": [
-        "anthropic-skills"
+        "anthropic-skills",
+        "microsoft-skills",
+        "microsoftdocs-agent-skills"
       ],
       "license": "Apache-2.0",
       "entrypoint": false
@@ -536,7 +569,9 @@
       "source_ids": [
         "playwright-cli",
         "playwright-mcp",
-        "superpowers"
+        "superpowers",
+        "microsoft-waza",
+        "microsoft-mcp"
       ],
       "license": "Apache-2.0",
       "entrypoint": false
@@ -556,7 +591,9 @@
         "practice",
         "curriculum"
       ],
-      "source_ids": [],
+      "source_ids": [
+        "microsoft-cat-agent-skills"
+      ],
       "license": "Apache-2.0",
       "entrypoint": false
     },
@@ -575,7 +612,10 @@
         "operations",
         "marketing"
       ],
-      "source_ids": [],
+      "source_ids": [
+        "microsoft-power-platform-skills",
+        "microsoft-cat-agent-skills"
+      ],
       "license": "Apache-2.0",
       "entrypoint": false
     }
