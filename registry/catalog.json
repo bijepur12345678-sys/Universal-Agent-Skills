@@ -3,10 +3,581 @@
   "generated_at": "2026-11-06",
   "entrypoint": "skills/universal-agent/SKILL.md",
   "skills": [
-    {"id":"universal-agent-entrypoint","name":"Universal Agent","description":"Single public entrypoint to identify tasks, search the internal catalogue, load relevant modules, and coordinate verified workflows.","domain":"agentic-ai","path":"skills/universal-agent/SKILL.md","version":"0.1.0","status":"experimental","tags":["universal","entrypoint","router","discovery","workflow"],"source_ids":[],"license":"Apache-2.0","entrypoint":true},
-    {"id":"github-source-research","name":"GitHub Source Research","description":"Find and evaluate public repositories, releases, compatibility, maintenance, security, and license evidence for candidate skills and tools.","domain":"research","path":"skills/modules/github-source-research.md","version":"0.1.0","status":"experimental","tags":["github","research","repository","source discovery","release","maintenance"],"source_ids":[],"license":"Apache-2.0","entrypoint":false},
-    {"id":"skill-authoring","name":"Skill Authoring","description":"Create modular and testable Agent Skills instructions with metadata, triggers, prerequisites, examples, and validation guidance.","domain":"agentic-ai","path":"skills/modules/skill-authoring.md","version":"0.1.0","status":"experimental","tags":["skill","authoring","markdown","agent skills","documentation"],"source_ids":["anthropic-skills"],"license":"Apache-2.0","entrypoint":false},
-    {"id":"license-provenance-review","name":"License and Provenance Review","description":"Review file-level license scope, source revisions, attribution, notices, and redistribution constraints before including third-party materials.","domain":"security-analysis","path":"skills/modules/license-provenance-review.md","version":"0.1.0","status":"experimental","tags":["license","provenance","copyright","attribution","supply chain"],"source_ids":["skillcorpus","agentic-awesome-skills","awesome-copilot"],"license":"Apache-2.0","entrypoint":false},
-    {"id":"registry-maintenance","name":"Registry Maintenance","description":"Maintain unique skill IDs, metadata quality, domain membership, source references, versions, and lifecycle status in the canonical catalogue.","domain":"agentic-ai","path":"skills/modules/registry-maintenance.md","version":"0.1.0","status":"experimental","tags":["registry","catalogue","deduplication","versioning","metadata"],"source_ids":["skillcorpus","skills-tree"],"license":"Apache-2.0","entrypoint":false}
+    {
+      "id": "universal-agent-entrypoint",
+      "name": "Universal Agent",
+      "description": "Single public entrypoint to identify tasks, search the internal catalogue, load relevant modules, and coordinate verified workflows.",
+      "domain": "agentic-ai",
+      "path": "skills/universal-agent/SKILL.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "universal",
+        "entrypoint",
+        "router",
+        "discovery",
+        "workflow"
+      ],
+      "source_ids": [],
+      "license": "Apache-2.0",
+      "entrypoint": true
+    },
+    {
+      "id": "github-source-research",
+      "name": "GitHub Source Research",
+      "description": "Find and evaluate public repositories, releases, compatibility, maintenance, security, and license evidence for candidate skills and tools.",
+      "domain": "research",
+      "path": "skills/universal-agent/references/modules/github-source-research.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "github",
+        "research",
+        "repository",
+        "source discovery",
+        "release",
+        "maintenance"
+      ],
+      "source_ids": [],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "skill-authoring",
+      "name": "Skill Authoring",
+      "description": "Create modular and testable Agent Skills instructions with metadata, triggers, prerequisites, examples, and validation guidance.",
+      "domain": "agentic-ai",
+      "path": "skills/universal-agent/references/modules/skill-authoring.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "skill",
+        "authoring",
+        "markdown",
+        "agent skills",
+        "documentation"
+      ],
+      "source_ids": [
+        "anthropic-skills"
+      ],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "license-provenance-review",
+      "name": "License and Provenance Review",
+      "description": "Review file-level license scope, source revisions, attribution, notices, and redistribution constraints before including third-party materials.",
+      "domain": "security-analysis",
+      "path": "skills/universal-agent/references/modules/license-provenance-review.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "license",
+        "provenance",
+        "copyright",
+        "attribution",
+        "supply chain"
+      ],
+      "source_ids": [
+        "skillcorpus",
+        "agentic-awesome-skills",
+        "awesome-copilot"
+      ],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "registry-maintenance",
+      "name": "Registry Maintenance",
+      "description": "Maintain unique skill IDs, metadata quality, domain membership, source references, versions, and lifecycle status in the canonical catalogue.",
+      "domain": "agentic-ai",
+      "path": "skills/universal-agent/references/modules/registry-maintenance.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "registry",
+        "catalogue",
+        "deduplication",
+        "versioning",
+        "metadata"
+      ],
+      "source_ids": [
+        "skillcorpus",
+        "skills-tree"
+      ],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "domain-ai-ml",
+      "name": "AI & Machine Learning",
+      "description": "Handle LLMs, embeddings, RAG, model selection, evaluation, fine-tuning, inference, and ML workflows.",
+      "domain": "ai-ml",
+      "path": "skills/universal-agent/references/modules/domain-ai-ml.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "AI",
+        "ML",
+        "LLM",
+        "RAG",
+        "embeddings",
+        "model evaluation"
+      ],
+      "source_ids": [
+        "skillcorpus"
+      ],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "domain-agentic-ai",
+      "name": "Agentic AI",
+      "description": "Design agents, planning, tool routing, memory, stateful workflows, orchestration, and multi-agent systems.",
+      "domain": "agentic-ai",
+      "path": "skills/universal-agent/references/modules/domain-agentic-ai.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "agents",
+        "planning",
+        "memory",
+        "routing",
+        "orchestration",
+        "multi-agent"
+      ],
+      "source_ids": [
+        "skillnet",
+        "langgraph",
+        "awesome-copilot"
+      ],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "domain-software-engineering",
+      "name": "Software Engineering",
+      "description": "Implement, debug, refactor, review, and maintain software repositories, APIs, and application architecture.",
+      "domain": "software-engineering",
+      "path": "skills/universal-agent/references/modules/domain-software-engineering.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "coding",
+        "debugging",
+        "refactoring",
+        "code review",
+        "architecture"
+      ],
+      "source_ids": [
+        "superpowers",
+        "awesome-copilot"
+      ],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "domain-frontend",
+      "name": "Frontend Development",
+      "description": "Build responsive accessible interfaces, components, UI state, design systems, and frontend performance improvements.",
+      "domain": "frontend",
+      "path": "skills/universal-agent/references/modules/domain-frontend.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "React",
+        "Next.js",
+        "Vue",
+        "CSS",
+        "accessibility",
+        "web UI"
+      ],
+      "source_ids": [
+        "vercel-agent-skills"
+      ],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "domain-backend",
+      "name": "Backend Development",
+      "description": "Design and implement APIs, backend services, authentication, authorization, jobs, and service integrations.",
+      "domain": "backend",
+      "path": "skills/universal-agent/references/modules/domain-backend.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "API",
+        "backend",
+        "authentication",
+        "services",
+        "server"
+      ],
+      "source_ids": [
+        "cloudflare-skills",
+        "supabase-agent-skills"
+      ],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "domain-cloud",
+      "name": "Cloud Platforms",
+      "description": "Plan and operate cloud architectures, serverless applications, Workers, storage, networking, and hosted services.",
+      "domain": "cloud",
+      "path": "skills/universal-agent/references/modules/domain-cloud.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "cloud",
+        "serverless",
+        "Workers",
+        "storage",
+        "networking"
+      ],
+      "source_ids": [
+        "cloudflare-skills"
+      ],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "domain-devops",
+      "name": "DevOps & Infrastructure",
+      "description": "Build CI/CD pipelines, containers, infrastructure automation, deployment, monitoring, and reliability workflows.",
+      "domain": "devops",
+      "path": "skills/universal-agent/references/modules/domain-devops.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "CI/CD",
+        "Docker",
+        "deployment",
+        "infrastructure",
+        "monitoring"
+      ],
+      "source_ids": [
+        "cloudflare-skills",
+        "awesome-copilot"
+      ],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "domain-databases",
+      "name": "Databases",
+      "description": "Design schemas, SQL and PostgreSQL queries, migrations, indexes, access policies, and data recovery workflows.",
+      "domain": "databases",
+      "path": "skills/universal-agent/references/modules/domain-databases.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "SQL",
+        "PostgreSQL",
+        "database",
+        "migrations",
+        "indexes"
+      ],
+      "source_ids": [
+        "supabase-agent-skills"
+      ],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "domain-research",
+      "name": "Research & Evidence Synthesis",
+      "description": "Conduct source-grounded research, repository discovery, evidence synthesis, literature review, and fact-checking.",
+      "domain": "research",
+      "path": "skills/universal-agent/references/modules/domain-research.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "research",
+        "web search",
+        "fact checking",
+        "literature review",
+        "sources"
+      ],
+      "source_ids": [
+        "skillcorpus",
+        "awesome-copilot"
+      ],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "domain-ui-ux",
+      "name": "UI/UX & Product Design",
+      "description": "Design user journeys, wireframes, prototypes, design systems, usable interfaces, and accessible experiences.",
+      "domain": "ui-ux",
+      "path": "skills/universal-agent/references/modules/domain-ui-ux.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "UI",
+        "UX",
+        "Figma",
+        "wireframes",
+        "design system",
+        "accessibility"
+      ],
+      "source_ids": [
+        "vercel-agent-skills"
+      ],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "domain-browser",
+      "name": "Browser Automation",
+      "description": "Inspect websites and automate authorized browser workflows using accessible page structure and verified state.",
+      "domain": "browser",
+      "path": "skills/universal-agent/references/modules/domain-browser.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "browser",
+        "web automation",
+        "Playwright",
+        "web testing",
+        "page inspection"
+      ],
+      "source_ids": [
+        "playwright-cli",
+        "playwright-mcp"
+      ],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "domain-desktop",
+      "name": "Desktop & Operating-System Automation",
+      "description": "Inspect and automate authorized desktop applications using semantic UI Automation and accessibility interfaces.",
+      "domain": "desktop",
+      "path": "skills/universal-agent/references/modules/domain-desktop.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "desktop",
+        "Windows",
+        "UI Automation",
+        "accessibility tree"
+      ],
+      "source_ids": [
+        "flaui-mcp"
+      ],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "domain-mobile",
+      "name": "Mobile Development",
+      "description": "Build and test Android and iOS applications, mobile interfaces, permissions, Flutter, and React Native workflows.",
+      "domain": "mobile",
+      "path": "skills/universal-agent/references/modules/domain-mobile.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "Android",
+        "iOS",
+        "Flutter",
+        "React Native",
+        "mobile apps"
+      ],
+      "source_ids": [],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "domain-media",
+      "name": "Media & Creative Production",
+      "description": "Plan and review image, video, audio, speech, transcription, editing, and creative asset workflows.",
+      "domain": "media",
+      "path": "skills/universal-agent/references/modules/domain-media.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "image",
+        "video",
+        "audio",
+        "speech",
+        "transcription",
+        "editing"
+      ],
+      "source_ids": [
+        "agentic-awesome-skills"
+      ],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "domain-youtube",
+      "name": "YouTube Research & Workflows",
+      "description": "Research public YouTube channels and video metadata, analyze authorized analytics, and plan content workflows.",
+      "domain": "youtube",
+      "path": "skills/universal-agent/references/modules/domain-youtube.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "YouTube",
+        "channel research",
+        "video metadata",
+        "analytics",
+        "content"
+      ],
+      "source_ids": [
+        "youtube-data-api"
+      ],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "domain-automation",
+      "name": "Automation & Integrations",
+      "description": "Design API, MCP, webhook, scheduled, and cross-application workflows with secure authorization and retries.",
+      "domain": "automation",
+      "path": "skills/universal-agent/references/modules/domain-automation.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "automation",
+        "MCP",
+        "API",
+        "webhooks",
+        "integrations",
+        "scheduling"
+      ],
+      "source_ids": [
+        "mcp-registry",
+        "mcp-inspector",
+        "langgraph"
+      ],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "domain-documents",
+      "name": "Documents & Office Workflows",
+      "description": "Extract, transform, generate, and verify PDF, Word, Excel, PowerPoint, Markdown, and structured reports.",
+      "domain": "documents",
+      "path": "skills/universal-agent/references/modules/domain-documents.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "PDF",
+        "Word",
+        "Excel",
+        "PowerPoint",
+        "documents",
+        "reports"
+      ],
+      "source_ids": [
+        "anthropic-skills"
+      ],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "domain-data-science",
+      "name": "Data Science & Analytics",
+      "description": "Clean, analyze, visualize, and transform data using reproducible statistical, ETL, and analytics workflows.",
+      "domain": "data-science",
+      "path": "skills/universal-agent/references/modules/domain-data-science.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "data science",
+        "analytics",
+        "ETL",
+        "statistics",
+        "visualization"
+      ],
+      "source_ids": [],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "domain-security-analysis",
+      "name": "Defensive Security & Software Analysis",
+      "description": "Review code and dependencies, assess defensive security risks, and analyze owned or explicitly authorized software.",
+      "domain": "security-analysis",
+      "path": "skills/universal-agent/references/modules/domain-security-analysis.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "secure coding",
+        "dependency audit",
+        "static analysis",
+        "threat modeling"
+      ],
+      "source_ids": [
+        "mcp-registry"
+      ],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "domain-testing-qa",
+      "name": "Testing & Quality Assurance",
+      "description": "Plan and run unit, integration, end-to-end, accessibility, performance, and regression tests.",
+      "domain": "testing-qa",
+      "path": "skills/universal-agent/references/modules/domain-testing-qa.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "testing",
+        "QA",
+        "unit tests",
+        "E2E",
+        "regression",
+        "Playwright"
+      ],
+      "source_ids": [
+        "playwright-cli",
+        "playwright-mcp",
+        "superpowers"
+      ],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "domain-education",
+      "name": "Education & Learning",
+      "description": "Create age-appropriate explanations, tutoring workflows, practice materials, and curriculum-aware learning resources.",
+      "domain": "education",
+      "path": "skills/universal-agent/references/modules/domain-education.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "education",
+        "tutoring",
+        "learning",
+        "practice",
+        "curriculum"
+      ],
+      "source_ids": [],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    },
+    {
+      "id": "domain-business",
+      "name": "Business & Operations",
+      "description": "Support product planning, process design, market research, project operations, and business documentation.",
+      "domain": "business",
+      "path": "skills/universal-agent/references/modules/domain-business.md",
+      "version": "0.1.0",
+      "status": "experimental",
+      "tags": [
+        "business",
+        "product planning",
+        "market research",
+        "operations",
+        "marketing"
+      ],
+      "source_ids": [],
+      "license": "Apache-2.0",
+      "entrypoint": false
+    }
   ]
 }
