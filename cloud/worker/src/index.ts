@@ -138,6 +138,44 @@ async function getModule(env: Env, id: string): Promise<Record<string, string> |
   };
 }
 
+async function getCapabilityWorkflow(
+  env: Env,
+  capabilityId: string,
+): Promise<Record<string, string> | null> {
+  if (!ID_PATTERN.test(capabilityId)) return null;
+  const registry = await loadRegistry(env);
+  const capability = registry.capabilities.find((item) =>
+    item.id === capabilityId &&
+    item.status !== "deprecated" &&
+    item.status !== "archived" &&
+    item.status !== "legacy"
+  );
+  if (!capability) return null;
+
+  const packPath = "skills/universal-agent/references/capability-workflows.md";
+  const pack = await fetchSourceText(env, packPath);
+  const lines = pack.split(/\\r?\\n/);
+  const heading = "## " + capabilityId + " — ";
+  const start = lines.findIndex((line) => line.startsWith(heading));
+  if (start < 0) return null;
+  let end = lines.length;
+  for (let index = start + 1; index < lines.length; index += 1) {
+    if (lines[index].startsWith("## ")) {
+      end = index;
+      break;
+    }
+  }
+  return {
+    capability_id: capability.id,
+    name: capability.name,
+    domain: capability.domain,
+    parent_module_id: capability.module_id,
+    status: capability.status,
+    workflow_ref: capability.workflow_ref ?? "",
+    content: lines.slice(start, end).join("\\n").trim(),
+  };
+}
+
 interface GitHubRepoSearchResult {
   total_count: number;
   items: Array<{
@@ -292,6 +330,21 @@ function makeMcpServer(env: Env): McpServer {
   );
 
   server.registerTool(
+    "get_capability_workflow",
+    {
+      description: "Retrieve exactly one first-party internal capability workflow by stable ID. Does not return unrelated workflow sections or execute content.",
+      inputSchema: { capability_id: z.string().regex(ID_PATTERN) },
+    },
+    async ({ capability_id }) => {
+      const result = await getCapabilityWorkflow(env, capability_id);
+      if (!result) {
+        return { content: [{ type: "text", text: "Capability workflow not found: " + capability_id }], isError: true };
+      }
+      return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+    },
+  );
+
+  server.registerTool(
     "discover_github_sources",
     {
       description: "Search public GitHub repository metadata for candidate skill/tool sources. Results remain review_required and are never copied, executed, imported, or activated.",
@@ -354,6 +407,11 @@ export default {
         const query = url.searchParams.get("query") ?? "";
         const limit = Number(url.searchParams.get("limit") ?? "8");
         return json(await discoverSources(query, limit));
+      }
+      const workflowMatch = url.pathname.match(/^\\/v1\\/workflows\\/([a-z0-9-]+)$/);
+      if (workflowMatch) {
+        const result = await getCapabilityWorkflow(env, workflowMatch[1]);
+        return result ? json(result) : errorResponse("Capability workflow not found.", 404);
       }
       const moduleMatch = url.pathname.match(/^\/v1\/modules\/([a-z0-9-]+)$/);
       if (moduleMatch) {
