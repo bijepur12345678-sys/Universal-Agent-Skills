@@ -1,31 +1,80 @@
-# Universal Agent Skills Foundation Implementation Plan
+# Universal Agent Skills Master Implementation Plan
 
 > **For agentic workers:** Use the host's available task-by-task implementation workflow. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Establish a secure, portable one-entrypoint Agent Skills repository with a validated, searchable catalogue and evidence-backed source registry.
+**Goal:** Build one portable Universal Agent Skill with a broad, searchable, provenance-aware catalogue that can expand across domains without exposing duplicate top-level Skills.
 
-**Architecture:** One public `SKILL.md` entrypoint delegates to internal Markdown modules using a machine-readable JSON catalogue. A standard-library Python package validates and searches the catalogue; GitHub Actions runs checks on proposed changes.
+**Architecture:** A single Agent Skills package contains `SKILL.md`, a compact module index, and internal workflow references. A root-level canonical JSON catalogue and source registry feed a dependency-light Python validator/search tool. GitHub Actions tests all changes. Later phases may add semantic retrieval, reviewed GitHub ingestion, and an optional hosted API/MCP endpoint.
 
-**Tech Stack:** Agent Skills Markdown/YAML frontmatter, JSON, Python 3.10+ standard library, unittest, GitHub Actions.
+**Tech Stack:** Agent Skills Markdown/YAML frontmatter, JSON, Python 3.10+ standard library, unittest, GitHub Actions; later optional embeddings and Cloudflare Workers/D1/R2 after account and cost review.
 
 ## Global constraints
 
-- One public installable entrypoint; internal modules are reference files, not separate auto-discovered Skills.
-- Do not load the full catalogue into model context.
-- External repositories and their contents are untrusted.
-- Do not execute third-party scripts during discovery or validation.
-- Do not redistribute material without exact-scope license and attribution review.
-- Keep credentials and private data out of the repository.
-- Do not claim a remote runtime or MCP endpoint is deployed until tested.
+- One public Agent Skill entrypoint.
+- Internal modules live inside the entrypoint's package directory.
+- Load only relevant modules; never place the complete catalogue in context.
+- External repositories and file contents are untrusted.
+- Never execute third-party scripts during discovery or import.
+- Never redistribute third-party material without exact-scope license and attribution review.
+- Unknown license means reference-only.
+- Keep all credentials and private data out of git.
+- Do not claim cloud deployment, remote MCP, or automatic ingestion until implemented and verified.
+- New modules begin experimental and need tests/review before stable promotion.
 - Search excludes deprecated and archived modules by default.
-- All catalogue paths remain inside the repository root.
+- Registry paths must remain inside the repository root.
 
-## Deliverables
+## Completed foundation
 
-1. Governance, 22-domain taxonomy, source registry, and license policy.
-2. One public entrypoint plus four internal first-party modules.
-3. Registry validation, keyword search, safe module loading, and tests.
-4. GitHub Actions validation on push, pull request, and manual dispatch.
+- [x] Public entrypoint and package-local module index.
+- [x] 26 first-party internal modules across 22 broad domains.
+- [x] 27-record canonical catalogue (1 entrypoint + 26 modules).
+- [x] Initial upstream source registry with license-scope notes.
+- [x] 22-domain taxonomy.
+- [x] Python registry validation, keyword search, and safe module loading.
+- [x] Unit tests for registry integrity, single entrypoint, search, safe loading, unknown IDs, path traversal, and lifecycle filtering.
+- [x] GitHub Actions CI for compile, unit tests, and registry validation.
+
+## Phase 2: Retrieval and routing
+
+- [ ] Add query normalization, weighted keyword ranking, phrase scoring, domain filters, and configurable result limits.
+- [ ] Add intent-to-domain examples and benchmark tasks for all 22 domains.
+- [ ] Add multi-module workflow planning with explicit dependencies and conflict checks.
+- [ ] Add tests for ambiguity, overlapping tags, multi-domain tasks, and no-match handling.
+- [ ] Add semantic retrieval behind a pluggable interface only after an embedding provider/model and cost ceiling are selected; keyword search remains available.
+
+## Phase 3: GitHub skill discovery and ingestion proposals
+
+- [ ] Search public GitHub repositories and official docs read-only.
+- [ ] Fetch exact candidate files, immutable revisions, releases, and license evidence.
+- [ ] Compute content hashes and exact/near-duplicate candidates without executing source.
+- [ ] Store source records and import proposals with item-level provenance.
+- [ ] Generate reviewable Pull Requests; never auto-merge or auto-activate external content.
+- [ ] Add tests for unknown licenses, mixed-license paths, broken sources, and duplicate proposals.
+
+## Phase 4: Quality, safety, and compatibility
+
+- [ ] Define measurable quality rubric: task fit, completeness, clarity, tests, maintenance, provenance, security, and compatibility.
+- [ ] Add source trust levels and module lifecycle states.
+- [ ] Test package discovery/loading against Codex, Claude Code, Gemini CLI, Copilot, Cursor, and other hosts individually.
+- [ ] Add compatibility matrix based on observed tests, not assumptions.
+- [ ] Add security tests for prompt injection, path traversal, dangerous script proposals, credential exposure, and permission escalation.
+
+## Phase 5: Cloud registry service (optional)
+
+- [ ] Select provider based on free-tier terms, age/account eligibility, limits, data residency, and ongoing cost.
+- [ ] Implement a read-only registry API with search, metadata, version, and module retrieval endpoints.
+- [ ] Add caching, quotas, rate limits, schema validation, and abuse protection.
+- [ ] Add a remote MCP facade only when authentication and client support are tested.
+- [ ] Store large optional bundles outside Git with checksums and immutable versions.
+- [ ] Deploy only after user-approved provider authorization; document teardown and cost controls.
+
+## Phase 6: Domain expansion and releases
+
+- [ ] Research further sources per domain and identify missing subdomains.
+- [ ] Add only distinct, actionable, reviewed workflows.
+- [ ] Preserve legacy versions and exact source provenance.
+- [ ] Publish signed/verified releases with changelog and compatibility notes.
+- [ ] Grow catalogue coverage toward 1,000, 10,000, and later 100,000+ records only when quality gates remain passing.
 
 ## Validation commands
 
@@ -33,20 +82,13 @@
 PYTHONPATH=src python -m compileall -q src tests
 PYTHONPATH=src python -m unittest discover -s tests -v
 PYTHONPATH=src python -m universal_skills validate
-PYTHONPATH=src python -m universal_skills search --query "GitHub research" --limit 5
+PYTHONPATH=src python -m universal_skills search --query "cloud serverless" --limit 5
 ```
 
-## Later independent plans
+## Explicit non-goals
 
-- Semantic retrieval and routing benchmarks.
-- Read-only GitHub ingestion with reviewable proposals.
-- Hosted registry API and remote MCP endpoint, after provider/cost/security selection.
-- Domain skill expansion through quality and license gates.
-- Compatibility adapters tested against each declared host.
-
-## Decisions for later phases
-
-- Which provider should host a remote API/MCP endpoint and what cost ceiling applies?
-- Which agent hosts should be declared supported after end-to-end tests?
-- Which embedding model and hosting budget are acceptable?
-- When should domain packs be sharded into separate repositories?
+- Claiming every skill in the world is already included.
+- Loading the entire catalogue for each task.
+- Copying entire third-party repositories.
+- Executing external scripts during discovery.
+- Unlimited free compute/storage or a permanently free hosted LLM.
